@@ -1,0 +1,6 @@
+framework module Pods_Rootopi {
+  umbrella header "Pods-Rootopi-umbrella.h"
+
+  export *
+  module * { export * }
+}

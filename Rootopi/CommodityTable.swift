@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class CommodityTable {
+    
+    var cName: String!
+    var photo: NSData!
+init(name: String,photo: NSData){
+     self.cName = name
+     self.photo = photo
+  }
+}

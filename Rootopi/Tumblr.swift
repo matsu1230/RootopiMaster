@@ -7,3 +7,20 @@
 //
 
 import Foundation
+import UIKit
+
+class Tumblr {
+    
+    var url: String!
+    var title: String!
+    var photourl: String!
+    var body: String!
+    
+    init(title: String, url: String, photourl: String, body: String){
+        self.url = url
+        self.photourl = photourl
+        self.body = body
+        self.title = title
+    }
+    
+}

@@ -10,8 +10,13 @@ import UIKit
 
 class TumblrTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tumblrImage: UIImageView!
+    @IBOutlet weak var tumblrLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        tumblrLabel.numberOfLines = 0
+        tumblrImage.layer.cornerRadius = 50
+        tumblrImage.layer.masksToBounds = true
         // Initialization code
     }
 

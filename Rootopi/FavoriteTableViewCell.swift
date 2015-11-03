@@ -10,8 +10,13 @@ import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var pName: UILabel!
+    @IBOutlet weak var pImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        pName.numberOfLines = 0
+        pImage.layer.cornerRadius = 50
+        pImage.layer.masksToBounds = true
         // Initialization code
     }
 

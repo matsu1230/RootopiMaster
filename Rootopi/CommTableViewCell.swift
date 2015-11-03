@@ -10,8 +10,14 @@ import UIKit
 
 class CommTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cNameLabel: UILabel!
+    @IBOutlet weak var pImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        cNameLabel.numberOfLines = 0
+        pImageView.layer.cornerRadius = 50
+        pImageView.layer.masksToBounds = true
         // Initialization code
     }
 
