@@ -22,6 +22,14 @@ class MapFinishViewController: UIViewController {
     }
     
 
+
+    @IBAction func toTopButtonTap(sender: UIButton) {
+        //let top = TopViewController()
+        let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("Download")
+        //DownloadsViewController.flg = true
+        self.navigationController?.showViewController(vc as! DownloadsViewController,  sender: vc)
+        //self.navigationController(HomeNavigationViewController)
+    }
     /*
     // MARK: - Navigation
 

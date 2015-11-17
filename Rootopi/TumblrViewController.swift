@@ -21,6 +21,7 @@ class TumblrViewController: UIViewController {
 
         viewSet()
 
+        print(id!)
         // Do any additional setup after loading the view.
     }
 
@@ -37,13 +38,19 @@ class TumblrViewController: UIViewController {
     func viewSet(){
         tumblrtitle.text = DownloadsViewController.tumblrTitle[Int(id!)] as? String
         let photoUrl = NSURL(string: (DownloadsViewController.tumblrPhotos[Int(id!)] as? String)!)
+        if photoUrl != nil {
             let req = NSURLRequest(URL:photoUrl!)
             NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
                     let image = UIImage(data:data!)
                     self.tumblrphoto.image = image
             }
 
-        //print(DownloadsViewController.tumblrBodys[Int(id!)]  as! String)
+        }  else {
+            print("aaaaaa")
+            let tumblrImage = UIImage(named: "star-on")
+            self.tumblrphoto.image = tumblrImage
+        }
+        
         do {
             self.tumblrbody.attributedText = try NSAttributedString(
                 data: DownloadsViewController.tumblrBodys[Int(id!)].dataUsingEncoding(NSUnicodeStringEncoding, allowLossyConversion: true)!,
@@ -63,6 +70,7 @@ class TumblrViewController: UIViewController {
             // 遷移先のViewContollerにセルの情報を渡す
             let cellVC : TumblrWebViewController = segue.destinationViewController as! TumblrWebViewController
             cellVC.url = DownloadsViewController.tumblrUrls[self.id!] as? String
+            cellVC.image = self.tumblrphoto.image
         }
     }
     

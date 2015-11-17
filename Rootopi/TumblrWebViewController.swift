@@ -11,14 +11,18 @@ import UIKit
 class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDelegate  {
 
     @IBOutlet weak var webView: UIWebView!
+    //@IBOutlet weak var imageView: UIImageView!
     
     var url : String?
     
     
+    var image : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //println(self.url)
+        print(self.url)
+        //print(image)
+        //self.imageView.image = image!
         openUrl(url!)
         // Do any additional setup after loading the view.
     }
@@ -34,7 +38,7 @@ class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDe
         let urlStr : String = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let Requrl = NSURL(string: urlStr as String)
         //let Requrl = NSURL(string: urlString)
-       // print(Requrl)
+        print(Requrl)
         let urlRequest = NSURLRequest(URL: Requrl!)
         webView.loadRequest(urlRequest)
     }

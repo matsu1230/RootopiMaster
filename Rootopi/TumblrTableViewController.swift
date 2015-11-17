@@ -49,15 +49,27 @@ class TumblrTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TumblrTableViewCell", forIndexPath: indexPath) as! TumblrTableViewCell
         let photoUrl = NSURL(string: DownloadsViewController.tumblrPhotos[indexPath.row] as! String)
-        let req = NSURLRequest(URL:photoUrl!)
-        NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+        if photoUrl != nil {
+            let req = NSURLRequest(URL:photoUrl!)
+            NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+                UIGraphicsBeginImageContext(self.size)
+                let photo = UIImage(data: data!)
+                photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+                let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                cell.tumblrImage.image = resizeImage
+                cell.tumblrLabel.text = DownloadsViewController.tumblrTitle[indexPath.row] as? String
+            }
+        }else {
             UIGraphicsBeginImageContext(self.size)
-            let photo = UIImage(data: data!)
-            photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+            let tumblrImage = UIImage(named: "star-on")
+            tumblrImage!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
             let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
+            //let tumblrImage = UIImage(named: "star-on")
             cell.tumblrImage.image = resizeImage
             cell.tumblrLabel.text = DownloadsViewController.tumblrTitle[indexPath.row] as? String
+            
         }
         
         return cell
@@ -78,6 +90,7 @@ class TumblrTableViewController: UITableViewController {
             let cellVC : TumblrViewController = segue.destinationViewController as! TumblrViewController
             //managerPname = CommodityManager.sheradInstance.commoditys[self.selectedRow!].cName as String
             cellVC.id = self.selectedRow
+            //cellVC
             //print(comMa.pName!)
         }
     }

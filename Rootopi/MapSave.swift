@@ -10,7 +10,26 @@ import Foundation
 import Parse
 
 class MapSave {
+    var lat: Double?
+    var lon: Double?
+    var name: String?
     
+    init(lat: Double, lon: Double, name: String){
+        self.lat = lat
+        self.lon = lon
+        self.name = name
+    }
     
+    func save(){
+        let commentObject = PFObject(className: "Map_Table")
+        commentObject["lat"] = self.lat
+        commentObject["lon"] = self.lon
+        commentObject["name"] = self.name
+        commentObject.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                print("保存完了")
+            }
+        }
+    }
     
 }

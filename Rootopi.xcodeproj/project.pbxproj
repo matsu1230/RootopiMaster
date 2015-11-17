@@ -23,6 +23,9 @@
 		D31B614F1BD0901000B09B5B /* CommViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B614E1BD0901000B09B5B /* CommViewController.swift */; };
 		D31BAEA61BD9D71100CE6BB4 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31BAEA51BD9D71100CE6BB4 /* MapDetailViewController.swift */; };
 		D31BAEA81BD9D89100CE6BB4 /* YahooLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31BAEA71BD9D89100CE6BB4 /* YahooLocal.swift */; };
+		D33CC3F01BF2D43E0028A7B0 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33CC3EF1BF2D43E0028A7B0 /* SearchTableViewController.swift */; };
+		D33CC3F31BF2D48C0028A7B0 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33CC3F11BF2D48C0028A7B0 /* SearchTableViewCell.swift */; };
+		D33CC3F41BF2D48C0028A7B0 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33CC3F21BF2D48C0028A7B0 /* SearchTableViewCell.xib */; };
 		D34653691BE3DAC900EBF405 /* TumblrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34653681BE3DAC900EBF405 /* TumblrViewController.swift */; };
 		D346536B1BE4953300EBF405 /* TumblrWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346536A1BE4953300EBF405 /* TumblrWebViewController.swift */; };
 		D36E10561BCDF52400CFDCAE /* CommTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E10541BCDF52400CFDCAE /* CommTableViewCell.swift */; };
@@ -37,6 +40,10 @@
 		D36F31D61BE7A86F00A40107 /* ShopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36F31D41BE7A86F00A40107 /* ShopTableViewCell.xib */; };
 		D386B3C71BE8DD9D00BB89B6 /* MapSubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3C61BE8DD9D00BB89B6 /* MapSubmitViewController.swift */; };
 		D386B3C91BE8EADC00BB89B6 /* MapSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3C81BE8EADC00BB89B6 /* MapSave.swift */; };
+		D386B3CB1BE8F76900BB89B6 /* MapFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */; };
+		D386B3CD1BE8F81100BB89B6 /* BarcodeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CC1BE8F81100BB89B6 /* BarcodeNavigationController.swift */; };
+		D386B3CF1BE8F8E800BB89B6 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CE1BE8F8E800BB89B6 /* HomeNavigationViewController.swift */; };
+		D386B3D31BE9010900BB89B6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3D21BE9010900BB89B6 /* TabBarViewController.swift */; };
 		D39698D61BE0679E0054898C /* TumblrTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39698D51BE0679E0054898C /* TumblrTableViewController.swift */; };
 		D39698D91BE06AC70054898C /* TumblrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39698D71BE06AC70054898C /* TumblrTableViewCell.swift */; };
 		D39698DA1BE06AC70054898C /* TumblrTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D39698D81BE06AC70054898C /* TumblrTableViewCell.xib */; };
@@ -90,6 +97,10 @@
 		D31B614E1BD0901000B09B5B /* CommViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommViewController.swift; sourceTree = "<group>"; };
 		D31BAEA51BD9D71100CE6BB4 /* MapDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		D31BAEA71BD9D89100CE6BB4 /* YahooLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YahooLocal.swift; sourceTree = "<group>"; };
+		D33CC3EC1BF241120028A7B0 /* Rootopi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rootopi-Bridging-Header.h"; sourceTree = "<group>"; };
+		D33CC3EF1BF2D43E0028A7B0 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		D33CC3F11BF2D48C0028A7B0 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D33CC3F21BF2D48C0028A7B0 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		D34653681BE3DAC900EBF405 /* TumblrViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrViewController.swift; sourceTree = "<group>"; };
 		D346536A1BE4953300EBF405 /* TumblrWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrWebViewController.swift; sourceTree = "<group>"; };
 		D36E10541BCDF52400CFDCAE /* CommTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +115,10 @@
 		D36F31D41BE7A86F00A40107 /* ShopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTableViewCell.xib; sourceTree = "<group>"; };
 		D386B3C61BE8DD9D00BB89B6 /* MapSubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSubmitViewController.swift; sourceTree = "<group>"; };
 		D386B3C81BE8EADC00BB89B6 /* MapSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSave.swift; sourceTree = "<group>"; };
+		D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFinishViewController.swift; sourceTree = "<group>"; };
+		D386B3CC1BE8F81100BB89B6 /* BarcodeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeNavigationController.swift; sourceTree = "<group>"; };
+		D386B3CE1BE8F8E800BB89B6 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
+		D386B3D21BE9010900BB89B6 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D39698D51BE0679E0054898C /* TumblrTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrTableViewController.swift; sourceTree = "<group>"; };
 		D39698D71BE06AC70054898C /* TumblrTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrTableViewCell.swift; sourceTree = "<group>"; };
 		D39698D81BE06AC70054898C /* TumblrTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TumblrTableViewCell.xib; sourceTree = "<group>"; };
@@ -183,6 +198,7 @@
 		D31694A11BC7806F0065A6C3 /* Rootopi */ = {
 			isa = PBXGroup;
 			children = (
+				D33CC3F51BF2D5430028A7B0 /* New Group */,
 				D31694A21BC7806F0065A6C3 /* AppDelegate.swift */,
 				D36E86A91BD6325B0060C004 /* Commodity */,
 				D31694A41BC7806F0065A6C3 /* TopViewController.swift */,
@@ -200,7 +216,15 @@
 				D36F31D31BE7A86F00A40107 /* ShopTableViewCell.swift */,
 				D36F31D41BE7A86F00A40107 /* ShopTableViewCell.xib */,
 				D31694AE1BC7806F0065A6C3 /* Info.plist */,
+				D386B3D21BE9010900BB89B6 /* TabBarViewController.swift */,
 				D31BAEA51BD9D71100CE6BB4 /* MapDetailViewController.swift */,
+				D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */,
+				D386B3CC1BE8F81100BB89B6 /* BarcodeNavigationController.swift */,
+				D386B3CE1BE8F8E800BB89B6 /* HomeNavigationViewController.swift */,
+				D33CC3EC1BF241120028A7B0 /* Rootopi-Bridging-Header.h */,
+				D33CC3EF1BF2D43E0028A7B0 /* SearchTableViewController.swift */,
+				D33CC3F11BF2D48C0028A7B0 /* SearchTableViewCell.swift */,
+				D33CC3F21BF2D48C0028A7B0 /* SearchTableViewCell.xib */,
 			);
 			path = Rootopi;
 			sourceTree = "<group>";
@@ -221,6 +245,13 @@
 				D31694C41BC7806F0065A6C3 /* Info.plist */,
 			);
 			path = RootopiUITests;
+			sourceTree = "<group>";
+		};
+		D33CC3F51BF2D5430028A7B0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		D346536C1BE4A01D00EBF405 /* Tumblr */ = {
@@ -332,12 +363,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = matsuuradaiki;
 				TargetAttributes = {
 					D316949E1BC7806F0065A6C3 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = U62JY7S4HX;
 					};
 					D31694B21BC7806F0065A6C3 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -378,6 +409,7 @@
 			files = (
 				D31694AD1BC7806F0065A6C3 /* LaunchScreen.storyboard in Resources */,
 				D36E10571BCDF52400CFDCAE /* CommTableViewCell.xib in Resources */,
+				D33CC3F41BF2D48C0028A7B0 /* SearchTableViewCell.xib in Resources */,
 				D31694AA1BC7806F0065A6C3 /* Assets.xcassets in Resources */,
 				D36F31D61BE7A86F00A40107 /* ShopTableViewCell.xib in Resources */,
 				D31694A81BC7806F0065A6C3 /* Main.storyboard in Resources */,
@@ -456,6 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D386B3D31BE9010900BB89B6 /* TabBarViewController.swift in Sources */,
 				D39698D91BE06AC70054898C /* TumblrTableViewCell.swift in Sources */,
 				D346536B1BE4953300EBF405 /* TumblrWebViewController.swift in Sources */,
 				D3FA9D2C1BD4D8B100207760 /* DownloadsViewController.swift in Sources */,
@@ -466,14 +499,19 @@
 				D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */,
 				D34653691BE3DAC900EBF405 /* TumblrViewController.swift in Sources */,
 				D31694A51BC7806F0065A6C3 /* TopViewController.swift in Sources */,
+				D33CC3F31BF2D48C0028A7B0 /* SearchTableViewCell.swift in Sources */,
 				D31694A31BC7806F0065A6C3 /* AppDelegate.swift in Sources */,
 				D36F31D01BE7666D00A40107 /* SelectViewController.swift in Sources */,
 				D302412A1BDF0E7000C2DB74 /* FavoriteTableViewController.swift in Sources */,
 				D30241321BDF6A7A00C2DB74 /* FavoriteNavigationController.swift in Sources */,
 				D31BAEA81BD9D89100CE6BB4 /* YahooLocal.swift in Sources */,
 				D31B614F1BD0901000B09B5B /* CommViewController.swift in Sources */,
+				D386B3CD1BE8F81100BB89B6 /* BarcodeNavigationController.swift in Sources */,
 				D36F31D51BE7A86F00A40107 /* ShopTableViewCell.swift in Sources */,
+				D33CC3F01BF2D43E0028A7B0 /* SearchTableViewController.swift in Sources */,
+				D386B3CF1BE8F8E800BB89B6 /* HomeNavigationViewController.swift in Sources */,
 				D36E10561BCDF52400CFDCAE /* CommTableViewCell.swift in Sources */,
+				D386B3CB1BE8F76900BB89B6 /* MapFinishViewController.swift in Sources */,
 				D39698DE1BE074BE0054898C /* Tumblr.swift in Sources */,
 				D302412D1BDF0E8500C2DB74 /* FavoriteTableViewCell.swift in Sources */,
 				D36E86AB1BD634390060C004 /* Comment.swift in Sources */,
@@ -624,11 +662,16 @@
 			baseConfigurationReference = 0F8297982B007C9EC364913E /* Pods-Rootopi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Rootopi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Rootopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Rootopi/Rootopi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -637,11 +680,15 @@
 			baseConfigurationReference = 38F3934864E51F35453C7812 /* Pods-Rootopi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Rootopi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Rootopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Rootopi/Rootopi-Bridging-Header.h";
 			};
 			name = Release;
 		};

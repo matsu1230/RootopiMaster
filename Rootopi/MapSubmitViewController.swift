@@ -15,13 +15,17 @@ class MapSubmitViewController: UIViewController {
     var lat : Double?
     var pinTitle : String?
     
+    @IBOutlet weak var shopLabel: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var selectMap: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //print(self.lon)
         //print(self.lat)
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the
+        self.shopLabel.text = self.pinTitle!
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,14 +46,11 @@ class MapSubmitViewController: UIViewController {
         self.selectMap.addAnnotation(myPin)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func submitButton(sender: UIButton) {
+        let map = MapSave(lat: self.lat!, lon: self.lon!,name: self.pinTitle!)
+        map.save()
     }
-    */
+    
+    
 
 }

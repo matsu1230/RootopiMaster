@@ -39,6 +39,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate {
         self.yls.condition.lon =  manager.location!.coordinate.longitude
         let myLatDist : CLLocationDistance = 1000
         let myLonDist : CLLocationDistance = 1000
+        manager.stopUpdatingLocation()
         yls.loadData(true)
         let loadDataObserver = NSNotificationCenter.defaultCenter().addObserverForName(yls.YLSLoadCompleteNotification, object: nil, queue: nil, usingBlock: { (notification) in
             //print(self.yls.shops[0].lon)
@@ -76,6 +77,10 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate {
         yls.condition.lon = 139.930531
         myMap.setRegion(myRegion, animated: true)
         myMap.addAnnotation(myPin)
+        
+    }
+    @IBAction func mapLocationRefresh(sender: AnyObject) {
+        myLocationManager.startUpdatingLocation()
     }
 
 }

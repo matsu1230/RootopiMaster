@@ -16,6 +16,8 @@ class TopViewController: UIViewController {
     @IBOutlet weak var comButton2: UIButton!
     @IBOutlet weak var tumblrButton: UIButton!
     
+    var id : Int?
+    
 
      let commodityCollection = CommodityManager.sheradInstance
     var count: Int = 0
@@ -48,21 +50,46 @@ class TopViewController: UIViewController {
         let title = DownloadsViewController.tumblrTitle[0]
         comButton1.setBackgroundImage(com[0].photo, forState: .Normal)
         comButton2.setBackgroundImage(com[1].photo, forState: .Normal)
-        let photoUrl = NSURL(string: tumblr as! String)
+        //let photoUrl = NSURL(string: tumblr as! String)
+        let urlStr : String = tumblr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let photoUrl = NSURL(string: urlStr )
+        //print(photoUrl)
+        if photoUrl == nil {
         let req = NSURLRequest(URL:photoUrl!)
-        NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
-            let tumblrImage = UIImage(data: data!)
+            NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+                let tumblrImage = UIImage(data: data!)
+                print(tumblrImage)
+                self.tumblrTitle.text = title as? String
+                self.tumblrButton.setBackgroundImage(tumblrImage, forState: .Normal)
+            }
+        } else {
+            print("aaaaaa")
+            let tumblrImage = UIImage(named: "star-on")
             self.tumblrTitle.text = title as? String
             self.tumblrButton.setBackgroundImage(tumblrImage, forState: .Normal)
         }
     }
     
-    @IBAction func comButton1Tap(sender: UIButton) {
-
-        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toComView" {
+            // 遷移先のViewContollerにセルの情報を渡す
+            let vc : CommViewController = segue.destinationViewController as! CommViewController
+            vc.id = self.id
+        }else if segue.identifier == "toTumblrView" {
+            let vc :TumblrViewController = segue.destinationViewController as! TumblrViewController
+            vc.id = 0
+        }
     }
     
-    @IBAction func comButton2Tap(sender: UIButton) {
+    @IBAction func comButton1Tap(sender: UIButton) {
+        self.id = 0
     }
+    @IBAction func comButton2Tap(sender: UIButton) {
+       self.id = 1
+    }
+    
+    
 }
 

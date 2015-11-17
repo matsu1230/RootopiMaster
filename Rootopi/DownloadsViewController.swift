@@ -12,8 +12,8 @@ import SwiftyJSON
 class DownloadsViewController: UIViewController {
 
     let commodityCollection = CommodityManager.sheradInstance
-    var flg: Bool?
-    var count: Int = 0
+    static var flg: Bool = false
+    var count : Int = 0
     
     //let sectionNum = 1
     // 1セクションあたりのセルの行数
@@ -55,10 +55,10 @@ class DownloadsViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //self.flg = load()
         let callback = { () -> Void in
+            //self.makeTableData()
             //self.viewDidAppear(true)
         }
         commodityCollection.fetcCommodity(callback)
-
     }
     
     override func didReceiveMemoryWarning() {
