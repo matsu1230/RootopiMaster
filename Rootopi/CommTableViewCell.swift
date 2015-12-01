@@ -9,7 +9,7 @@
 import UIKit
 
 class CommTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var cNameLabel: UILabel!
     @IBOutlet weak var pImageView: UIImageView!
     
@@ -20,10 +20,10 @@ class CommTableViewCell: UITableViewCell {
         pImageView.layer.masksToBounds = true
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

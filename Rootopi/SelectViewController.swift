@@ -13,11 +13,17 @@ import Parse
 class SelectViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var shopListTable: UITableView!
-
+    @IBOutlet weak var comImageView: UIImageView!
+    @IBOutlet weak var pNameLabel: UILabel!
+    
     var addBtn: UIBarButtonItem!
     var myNavigationController: UINavigationController?
     var selectedRow: Int?
+    var barcode : String?
+    
+    let manager = CommodityManager()
 
+    
     var myLocationManager:CLLocationManager!
     let yls: YahooLocalSearch = YahooLocalSearch()
     
@@ -36,15 +42,24 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
         myLocationManager.requestAlwaysAuthorization()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
+        manager.barcodeCommodity(barcode!, callBack: { barSerch in
+            //elf.barcode = barcode
+            self.pNameLabel.text = barSerch.cName
+            self.comImageView.image = barSerch.photo
+            }
+        )
         yls.loadData()
+        //if self.barcode == CommodityManager.sheradInstance.commoditys
+        
     }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.yls.condition.lat = manager.location!.coordinate.latitude
         self.yls.condition.lon =  manager.location!.coordinate.longitude
@@ -53,7 +68,7 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
             self.shopListTable.reloadData()
         })
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return yls.total
     }
@@ -71,12 +86,12 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
         //let com = CommodityManager.sheradInstance.commoditys[indexPath.row]
         let i = yls.total
         if i  > indexPath.row {
-        cell.shopLabel.text = yls.shops[indexPath.row].name!
-        //print(comment)
-        return cell
+            cell.shopLabel.text = yls.shops[indexPath.row].name!
+            //print(comment)
+            return cell
         } else {
-        cell.shopLabel.text  = ""
-        return cell
+            cell.shopLabel.text  = ""
+            return cell
         }
     }
     
@@ -95,8 +110,11 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
             cellVC.lat = yls.shops[self.selectedRow!].lat
             cellVC.lon = yls.shops[self.selectedRow!].lon
             cellVC.pinTitle = yls.shops[self.selectedRow!].name
+            cellVC.barcode = self.barcode
+            cellVC.pImage = self.comImageView.image
+            cellVC.pName = self.pNameLabel.text
         }
     }
-
+    
     
 }

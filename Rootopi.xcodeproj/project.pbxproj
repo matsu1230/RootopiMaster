@@ -12,6 +12,7 @@
 		D302412D1BDF0E8500C2DB74 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D302412B1BDF0E8500C2DB74 /* FavoriteTableViewCell.swift */; };
 		D302412E1BDF0E8500C2DB74 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D302412C1BDF0E8500C2DB74 /* FavoriteTableViewCell.xib */; };
 		D30241321BDF6A7A00C2DB74 /* FavoriteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30241311BDF6A7A00C2DB74 /* FavoriteNavigationController.swift */; };
+		D30E42AC1C0DF91E000B2D2F /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E42AB1C0DF91D000B2D2F /* Maps.swift */; };
 		D31694A31BC7806F0065A6C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31694A21BC7806F0065A6C3 /* AppDelegate.swift */; };
 		D31694A51BC7806F0065A6C3 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31694A41BC7806F0065A6C3 /* TopViewController.swift */; };
 		D31694A81BC7806F0065A6C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D31694A61BC7806F0065A6C3 /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		D33CC3F41BF2D48C0028A7B0 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33CC3F21BF2D48C0028A7B0 /* SearchTableViewCell.xib */; };
 		D34653691BE3DAC900EBF405 /* TumblrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34653681BE3DAC900EBF405 /* TumblrViewController.swift */; };
 		D346536B1BE4953300EBF405 /* TumblrWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D346536A1BE4953300EBF405 /* TumblrWebViewController.swift */; };
+		D35D02601C075AD200726586 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35D025F1C075AD200726586 /* Barcode.swift */; };
 		D36E10561BCDF52400CFDCAE /* CommTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E10541BCDF52400CFDCAE /* CommTableViewCell.swift */; };
 		D36E10571BCDF52400CFDCAE /* CommTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36E10551BCDF52400CFDCAE /* CommTableViewCell.xib */; };
 		D36E86A51BD625050060C004 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E86A31BD625050060C004 /* CommentTableViewCell.swift */; };
@@ -52,6 +54,7 @@
 		D3A3F2621BDDCC5500ABE69A /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3F2611BDDCC5500ABE69A /* Favorite.swift */; };
 		D3A944451BCC89CB00926026 /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944441BCC89CB00926026 /* Commodity.swift */; };
 		D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944461BCC8CF300926026 /* CommodityManager.swift */; };
+		D3C90EC51BFC249200827250 /* MapManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C90EC41BFC249200827250 /* MapManeger.swift */; };
 		D3FA9D2C1BD4D8B100207760 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FA9D2B1BD4D8B100207760 /* DownloadsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +83,7 @@
 		D302412B1BDF0E8500C2DB74 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		D302412C1BDF0E8500C2DB74 /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		D30241311BDF6A7A00C2DB74 /* FavoriteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteNavigationController.swift; sourceTree = "<group>"; };
+		D30E42AB1C0DF91D000B2D2F /* Maps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		D316949F1BC7806F0065A6C3 /* Rootopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rootopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D31694A21BC7806F0065A6C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D31694A41BC7806F0065A6C3 /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 		D33CC3F21BF2D48C0028A7B0 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		D34653681BE3DAC900EBF405 /* TumblrViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrViewController.swift; sourceTree = "<group>"; };
 		D346536A1BE4953300EBF405 /* TumblrWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrWebViewController.swift; sourceTree = "<group>"; };
+		D35D025F1C075AD200726586 /* Barcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		D36E10541BCDF52400CFDCAE /* CommTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommTableViewCell.swift; sourceTree = "<group>"; };
 		D36E10551BCDF52400CFDCAE /* CommTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommTableViewCell.xib; sourceTree = "<group>"; };
 		D36E86A31BD625050060C004 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 		D3A3F2611BDDCC5500ABE69A /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		D3A944441BCC89CB00926026 /* Commodity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		D3A944461BCC8CF300926026 /* CommodityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityManager.swift; sourceTree = "<group>"; };
+		D3C90EC41BFC249200827250 /* MapManeger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManeger.swift; sourceTree = "<group>"; };
 		D3FA9D2B1BD4D8B100207760 /* DownloadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,7 +204,6 @@
 		D31694A11BC7806F0065A6C3 /* Rootopi */ = {
 			isa = PBXGroup;
 			children = (
-				D33CC3F51BF2D5430028A7B0 /* New Group */,
 				D31694A21BC7806F0065A6C3 /* AppDelegate.swift */,
 				D36E86A91BD6325B0060C004 /* Commodity */,
 				D31694A41BC7806F0065A6C3 /* TopViewController.swift */,
@@ -211,7 +216,10 @@
 				D31694A91BC7806F0065A6C3 /* Assets.xcassets */,
 				D31694AB1BC7806F0065A6C3 /* LaunchScreen.storyboard */,
 				D36F31CF1BE7666D00A40107 /* SelectViewController.swift */,
+				D35D025F1C075AD200726586 /* Barcode.swift */,
 				D386B3C81BE8EADC00BB89B6 /* MapSave.swift */,
+				D3C90EC41BFC249200827250 /* MapManeger.swift */,
+				D30E42AB1C0DF91D000B2D2F /* Maps.swift */,
 				D386B3C61BE8DD9D00BB89B6 /* MapSubmitViewController.swift */,
 				D36F31D31BE7A86F00A40107 /* ShopTableViewCell.swift */,
 				D36F31D41BE7A86F00A40107 /* ShopTableViewCell.xib */,
@@ -245,13 +253,6 @@
 				D31694C41BC7806F0065A6C3 /* Info.plist */,
 			);
 			path = RootopiUITests;
-			sourceTree = "<group>";
-		};
-		D33CC3F51BF2D5430028A7B0 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		D346536C1BE4A01D00EBF405 /* Tumblr */ = {
@@ -369,6 +370,7 @@
 				TargetAttributes = {
 					D316949E1BC7806F0065A6C3 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = U62JY7S4HX;
 					};
 					D31694B21BC7806F0065A6C3 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -496,12 +498,15 @@
 				D39698DC1BE0727F0054898C /* TumblrManager.swift in Sources */,
 				D386B3C71BE8DD9D00BB89B6 /* MapSubmitViewController.swift in Sources */,
 				D3A3F2621BDDCC5500ABE69A /* Favorite.swift in Sources */,
+				D35D02601C075AD200726586 /* Barcode.swift in Sources */,
 				D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */,
+				D30E42AC1C0DF91E000B2D2F /* Maps.swift in Sources */,
 				D34653691BE3DAC900EBF405 /* TumblrViewController.swift in Sources */,
 				D31694A51BC7806F0065A6C3 /* TopViewController.swift in Sources */,
 				D33CC3F31BF2D48C0028A7B0 /* SearchTableViewCell.swift in Sources */,
 				D31694A31BC7806F0065A6C3 /* AppDelegate.swift in Sources */,
 				D36F31D01BE7666D00A40107 /* SelectViewController.swift in Sources */,
+				D3C90EC51BFC249200827250 /* MapManeger.swift in Sources */,
 				D302412A1BDF0E7000C2DB74 /* FavoriteTableViewController.swift in Sources */,
 				D30241321BDF6A7A00C2DB74 /* FavoriteNavigationController.swift in Sources */,
 				D31BAEA81BD9D89100CE6BB4 /* YahooLocal.swift in Sources */,

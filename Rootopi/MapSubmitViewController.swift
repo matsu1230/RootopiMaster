@@ -10,10 +10,13 @@ import UIKit
 import MapKit
 
 class MapSubmitViewController: UIViewController {
-
+    
     var lon : Double?
     var lat : Double?
     var pinTitle : String?
+    var barcode :String?
+    var pName : String?
+    var pImage : UIImage?
     
     @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
@@ -25,16 +28,16 @@ class MapSubmitViewController: UIViewController {
         //print(self.lat)
         // Do any additional setup after loading the
         self.shopLabel.text = self.pinTitle!
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-   override func viewDidAppear(animated: Bool) {
+    
+    override func viewDidAppear(animated: Bool) {
         let preiceLon = self.lon!
         let preiceLat = self.lat!
         let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(preiceLat, preiceLon)
@@ -47,10 +50,11 @@ class MapSubmitViewController: UIViewController {
     }
     
     @IBAction func submitButton(sender: UIButton) {
-        let map = MapSave(lat: self.lat!, lon: self.lon!,name: self.pinTitle!)
+        let data : NSData = UIImagePNGRepresentation(self.pImage!)!
+        let map = MapSave(lat: self.lat!, lon: self.lon!,name: self.pinTitle!, barcode:  self.barcode!, pName: self.pName!, pImage: data)
         map.save()
     }
     
     
-
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDelegate  {
-
+    
     @IBOutlet weak var webView: UIWebView!
     //@IBOutlet weak var imageView: UIImageView!
     
@@ -50,5 +50,5 @@ class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDe
         }
         
     }
-
+    
 }

@@ -16,29 +16,31 @@ class TopViewController: UIViewController {
     @IBOutlet weak var comButton2: UIButton!
     @IBOutlet weak var tumblrButton: UIButton!
     
+    @IBOutlet weak var myScrollView: UIScrollView!
     var id : Int?
     
-
-     let commodityCollection = CommodityManager.sheradInstance
+    
+    let commodityCollection = CommodityManager.sheradInstance
     var count: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let callback = { () -> Void in
-                self.viewDidAppear(true)
+            self.viewDidAppear(true)
             
             if self.count == 2 {
                 self.viewSet()
             }
             self.count += 1
-
+            
         }
         commodityCollection.fetcCommodity(callback)
+        //myScrollView.
         // Do any additional setup after loading the view, typically from a nib.
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,8 +56,8 @@ class TopViewController: UIViewController {
         let urlStr : String = tumblr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         let photoUrl = NSURL(string: urlStr )
         //print(photoUrl)
-        if photoUrl == nil {
-        let req = NSURLRequest(URL:photoUrl!)
+        if photoUrl != nil {
+            let req = NSURLRequest(URL:photoUrl!)
             NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
                 let tumblrImage = UIImage(data: data!)
                 print(tumblrImage)
@@ -87,7 +89,7 @@ class TopViewController: UIViewController {
         self.id = 0
     }
     @IBAction func comButton2Tap(sender: UIButton) {
-       self.id = 1
+        self.id = 1
     }
     
     

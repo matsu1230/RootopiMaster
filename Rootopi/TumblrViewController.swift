@@ -9,22 +9,22 @@
 import UIKit
 
 class TumblrViewController: UIViewController {
-
+    
     @IBOutlet weak var tumblrphoto: UIImageView!
     @IBOutlet weak var tumblrtitle: UILabel!
     @IBOutlet weak var tumblrbody: UILabel!
     var id : Int?
     var err: NSError?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         viewSet()
-
+        
         print(id!)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,17 +34,17 @@ class TumblrViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         //tumblrbody.text = DownloadsViewController.tumblrBodys[Int(id!)] as! String
     }
-
+    
     func viewSet(){
         tumblrtitle.text = DownloadsViewController.tumblrTitle[Int(id!)] as? String
         let photoUrl = NSURL(string: (DownloadsViewController.tumblrPhotos[Int(id!)] as? String)!)
         if photoUrl != nil {
             let req = NSURLRequest(URL:photoUrl!)
             NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
-                    let image = UIImage(data:data!)
-                    self.tumblrphoto.image = image
+                let image = UIImage(data:data!)
+                self.tumblrphoto.image = image
             }
-
+            
         }  else {
             print("aaaaaa")
             let tumblrImage = UIImage(named: "star-on")
@@ -77,12 +77,12 @@ class TumblrViewController: UIViewController {
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

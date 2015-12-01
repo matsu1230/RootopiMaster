@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class DownloadsViewController: UIViewController {
-
+    
     let commodityCollection = CommodityManager.sheradInstance
     static var flg: Bool = false
     var count : Int = 0
@@ -71,9 +71,9 @@ class DownloadsViewController: UIViewController {
         //print(false)
         self.makeTableData()
         //self.transition()
-
+        
     }
-
+    
     
     func transition() {
         
@@ -86,7 +86,7 @@ class DownloadsViewController: UIViewController {
         self.presentViewController(next, animated: true, completion: nil)
         
     }
-
+    
     
     func makeTableData() {
         let url = NSURL(string: self.urlString)!

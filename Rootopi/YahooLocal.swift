@@ -176,7 +176,7 @@ public class YahooLocalSearch {
             if (error == nil) && (data != nil){
                 json = SwiftyJSON.JSON(data: data!)
             }
-
+            
             // 店舗データをself.shopsに追加する
             for (_, item) in json["Feature"] {
                 var shop = Shop()
@@ -234,7 +234,7 @@ public class YahooLocalSearch {
             if let total = json["ResultInfo"]["Total"].int {
                 self.total = total
                 print(self.total)
-                print(self.shops[0].name)
+                //print(self.shops[0].name)
             } else {
                 self.total = 0
             }
@@ -244,7 +244,7 @@ public class YahooLocalSearch {
             // API実行終了を通知する
             NSNotificationCenter.defaultCenter().postNotificationName(
                 self.YLSLoadCompleteNotification, object: nil)
-      }
+        }
     }
     
     func sortByGid(){
@@ -260,6 +260,6 @@ public class YahooLocalSearch {
             }
         }
         // 新しい配列を返す
-        shops = newShops 
+        shops = newShops
     }
 }

@@ -9,7 +9,9 @@
 import UIKit
 
 class ShopTableViewCell: UITableViewCell {
+    //@IBOutlet weak var shopTextLabel: UILabel!
 
+    @IBOutlet weak var shopImage: UIImageView!
     @IBOutlet weak var shopLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

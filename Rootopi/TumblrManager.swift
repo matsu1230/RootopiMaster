@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class TumblrManager {
     let urlString = "http://api.tumblr.com/v2/blog/omupro2015.tumblr.com/posts/text?api_key=bbhaWmEh5JZQ9hmMYGjHMqhycnMQXUDHSarwUXYGRYmcOzTRL8"
-
+    
     // セルの中身
     static var cellItems = NSMutableArray()
     //セルの中身のURL

@@ -84,5 +84,14 @@ class BarCodeViewController: UIViewController,AVCaptureMetadataOutputObjectsDele
     @IBAction func barCodeButtonTap(sender: UIButton) {
         self.captureSession.startRunning()
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toSelect" {
+            // 遷移先のViewContollerにセルの情報を渡す
+            let vc : SelectViewController = segue.destinationViewController as! SelectViewController
+            vc.barcode = self.barCodeData
+        }
+    }
 }

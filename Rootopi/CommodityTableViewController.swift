@@ -9,7 +9,7 @@
 import UIKit
 
 class CommodityTableViewController: UITableViewController {
-
+    
     
     //letvarmmodityCollection = CommodityManager.sheradInstance
     var selectedRow: Int?
@@ -24,39 +24,39 @@ class CommodityTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         //print(CommodityManager.sheradInstance.commoditys)
-       // load()
+        // load()
     }
-
+    
     /*func load() {
-            let callback = { () -> Void in
-                self.tableView.reloadData()
-                
-            }
-            commodityCollection.fetcCommodity(callback)
-        //print(commodityCollection)
-        //print(callback)
+    let callback = { () -> Void in
+    self.tableView.reloadData()
+    
+    }
+    commodityCollection.fetcCommodity(callback)
+    //print(commodityCollection)
+    //print(callback)
     }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
- 
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //print(commodityCollection.commoditys.count)
         //self.maxRow = commodityCollection.commoditys.count
         return CommodityManager.sheradInstance.commoditys.count
     }
-
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
@@ -88,9 +88,9 @@ class CommodityTableViewController: UITableViewController {
             //print(comMa.pName!)
         }
     }
-
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-
+    
 }

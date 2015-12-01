@@ -14,7 +14,7 @@ class CommentManager{
     //static let pName = CommentManager()
     static let commentInstance = CommentManager()
     
-
+    
     func fechComment(callBack: () -> Void) {
         let query = PFQuery(className: "C_Table")
         query.orderByDescending("createdAt")
