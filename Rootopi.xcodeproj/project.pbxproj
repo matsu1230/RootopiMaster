@@ -36,6 +36,7 @@
 		D36E86A61BD625050060C004 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36E86A41BD625050060C004 /* CommentTableViewCell.xib */; };
 		D36E86AB1BD634390060C004 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E86AA1BD634390060C004 /* Comment.swift */; };
 		D36E86AD1BD67DB40060C004 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36E86AC1BD67DB40060C004 /* CommentManager.swift */; };
+		D36F2D611C10717100E3BF9E /* BarcodeSerchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F2D601C10717100E3BF9E /* BarcodeSerchViewController.swift */; };
 		D36F31CE1BE753A500A40107 /* BarCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F31CD1BE753A500A40107 /* BarCodeViewController.swift */; };
 		D36F31D01BE7666D00A40107 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F31CF1BE7666D00A40107 /* SelectViewController.swift */; };
 		D36F31D51BE7A86F00A40107 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F31D31BE7A86F00A40107 /* ShopTableViewCell.swift */; };
@@ -55,6 +56,8 @@
 		D3A944451BCC89CB00926026 /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944441BCC89CB00926026 /* Commodity.swift */; };
 		D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944461BCC8CF300926026 /* CommodityManager.swift */; };
 		D3C90EC51BFC249200827250 /* MapManeger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C90EC41BFC249200827250 /* MapManeger.swift */; };
+		D3DC44111C0E8719004003AC /* SelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DC440F1C0E8719004003AC /* SelectTableViewCell.swift */; };
+		D3DC44121C0E8719004003AC /* SelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3DC44101C0E8719004003AC /* SelectTableViewCell.xib */; };
 		D3FA9D2C1BD4D8B100207760 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FA9D2B1BD4D8B100207760 /* DownloadsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +117,7 @@
 		D36E86A41BD625050060C004 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		D36E86AA1BD634390060C004 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D36E86AC1BD67DB40060C004 /* CommentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
+		D36F2D601C10717100E3BF9E /* BarcodeSerchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeSerchViewController.swift; sourceTree = "<group>"; };
 		D36F31CD1BE753A500A40107 /* BarCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCodeViewController.swift; sourceTree = "<group>"; };
 		D36F31CF1BE7666D00A40107 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		D36F31D31BE7A86F00A40107 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		D3A944441BCC89CB00926026 /* Commodity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		D3A944461BCC8CF300926026 /* CommodityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityManager.swift; sourceTree = "<group>"; };
 		D3C90EC41BFC249200827250 /* MapManeger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManeger.swift; sourceTree = "<group>"; };
+		D3DC440F1C0E8719004003AC /* SelectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableViewCell.swift; sourceTree = "<group>"; };
+		D3DC44101C0E8719004003AC /* SelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectTableViewCell.xib; sourceTree = "<group>"; };
 		D3FA9D2B1BD4D8B100207760 /* DownloadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +239,9 @@
 				D33CC3EF1BF2D43E0028A7B0 /* SearchTableViewController.swift */,
 				D33CC3F11BF2D48C0028A7B0 /* SearchTableViewCell.swift */,
 				D33CC3F21BF2D48C0028A7B0 /* SearchTableViewCell.xib */,
+				D3DC440F1C0E8719004003AC /* SelectTableViewCell.swift */,
+				D3DC44101C0E8719004003AC /* SelectTableViewCell.xib */,
+				D36F2D601C10717100E3BF9E /* BarcodeSerchViewController.swift */,
 			);
 			path = Rootopi;
 			sourceTree = "<group>";
@@ -414,6 +423,7 @@
 				D33CC3F41BF2D48C0028A7B0 /* SearchTableViewCell.xib in Resources */,
 				D31694AA1BC7806F0065A6C3 /* Assets.xcassets in Resources */,
 				D36F31D61BE7A86F00A40107 /* ShopTableViewCell.xib in Resources */,
+				D3DC44121C0E8719004003AC /* SelectTableViewCell.xib in Resources */,
 				D31694A81BC7806F0065A6C3 /* Main.storyboard in Resources */,
 				D36E86A61BD625050060C004 /* CommentTableViewCell.xib in Resources */,
 				D302412E1BDF0E8500C2DB74 /* FavoriteTableViewCell.xib in Resources */,
@@ -516,6 +526,7 @@
 				D33CC3F01BF2D43E0028A7B0 /* SearchTableViewController.swift in Sources */,
 				D386B3CF1BE8F8E800BB89B6 /* HomeNavigationViewController.swift in Sources */,
 				D36E10561BCDF52400CFDCAE /* CommTableViewCell.swift in Sources */,
+				D36F2D611C10717100E3BF9E /* BarcodeSerchViewController.swift in Sources */,
 				D386B3CB1BE8F76900BB89B6 /* MapFinishViewController.swift in Sources */,
 				D39698DE1BE074BE0054898C /* Tumblr.swift in Sources */,
 				D302412D1BDF0E8500C2DB74 /* FavoriteTableViewCell.swift in Sources */,
@@ -525,6 +536,7 @@
 				D31694D11BC7F07D0065A6C3 /* CommodityTableViewController.swift in Sources */,
 				D36F31CE1BE753A500A40107 /* BarCodeViewController.swift in Sources */,
 				D386B3C91BE8EADC00BB89B6 /* MapSave.swift in Sources */,
+				D3DC44111C0E8719004003AC /* SelectTableViewCell.swift in Sources */,
 				D36E86AD1BD67DB40060C004 /* CommentManager.swift in Sources */,
 				D3A944451BCC89CB00926026 /* Commodity.swift in Sources */,
 			);

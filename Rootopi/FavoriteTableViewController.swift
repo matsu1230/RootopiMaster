@@ -12,22 +12,20 @@ class FavoriteTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var favoBar: UITabBarItem!
     @IBOutlet weak var favoTable: UITableView!
-
+    
     var selectedRow: Int?
+    
+    let commodity = CommodityManager.sheradInstance
+    var id : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         favoTable.registerNib(UINib(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: "FavoriteTableViewCell")
-        //favoTable.estimatedRowHeight = 120
-        //favoTable.rowHeight = UITableViewAutomaticDimension
         favoTable.delegate = self
         favoTable.dataSource = self
         Favorite.load()
-        //favoTable.reloadData()
-
-        //print(Favorite.favorites[0])
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,49 +33,60 @@ class FavoriteTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     override func viewDidAppear(animated: Bool) {
-
+        
         if self.navigationController is FavoriteNavigationController {
             //viewDidLoad()
             favoTable.reloadData()
         }
     }
-
+    
     // MARK: - Table view data source
-
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-            return Favorite.favorites.count
+        return Favorite.favorites.count
     }
     
-     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 100
     }
     
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FavoriteTableViewCell", forIndexPath: indexPath) as! FavoriteTableViewCell
         Favorite.load()
         //let com = CommodityManager.sheradInstance.commoditys[indexPath.row]
         //print(indexPath.row)
         print(Favorite.favorites, terminator: "")
-            for (var j = 0; j < CommodityManager.sheradInstance.commoditys.count; j++){
-                if (Favorite.favorites[indexPath.row] == CommodityManager.sheradInstance.commoditys[j].cName){
-                    cell.pName.text = CommodityManager.sheradInstance.commoditys[j].cName
-                    cell.pImage.image = CommodityManager.sheradInstance.commoditys[j].photo
-                }
+        for (var j = 0; j < CommodityManager.sheradInstance.commoditys.count; j++){
+            if (Favorite.favorites[indexPath.row] == CommodityManager.sheradInstance.commoditys[j].cName){
+                cell.pName.text = CommodityManager.sheradInstance.commoditys[j].cName
+                cell.pImage.image = CommodityManager.sheradInstance.commoditys[j].photo
             }
+        }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedRow = indexPath.row
+        for var i = 0; i < commodity.commoditys.count; i++ {
+            if (Favorite.favorites[self.selectedRow!] == commodity.commoditys[i].cName) {
+                self.id = i
+            }
+        }
+        performSegueWithIdentifier("fromFavorite", sender: nil)
+        
     }
-
     
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromFavorite" {
+            let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            comVC.id = self.id
+        }
+    }
 }

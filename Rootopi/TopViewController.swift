@@ -26,6 +26,7 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.myScrollView.contentSize.height = 1300
         let callback = { () -> Void in
             self.viewDidAppear(true)
             

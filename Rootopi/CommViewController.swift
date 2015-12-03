@@ -9,12 +9,13 @@
 import UIKit
 
 class CommViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
-
+    
     @IBOutlet weak var commentTable: UITableView!
     @IBOutlet weak var mapPin: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var favoButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var commentTableView: UIView!
     @IBOutlet weak var cRelease: UILabel!
     @IBOutlet weak var cKcal: UILabel!
     @IBOutlet weak var cPrice: UILabel!
@@ -22,6 +23,9 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var cMaker: UILabel!
     @IBOutlet weak var cName: UILabel!
     @IBOutlet weak var stampImage: UIImageView!
+    @IBOutlet weak var commentScrollView: UIScrollView!
+    @IBOutlet weak var commScrollView: UIScrollView!
+    
     
     let view1 = UIView()
     let contentView = UIView()
@@ -30,25 +34,42 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let button2 = UIButton()
     let button3 = UIButton()
     var buttonImage : UIImage!
+    var stampIndex : Int?
     var width : CGFloat = 60
     var hight : CGFloat = 60
+    let size = CGSize(width: 50, height: 50)
     var imageArray = ["nikori", "oisii", "bad", "bikkuri", "bimyou", "gakkari", "hutuu", "ikari", "like", "mazui", "megane", "umm", "tehe"]
     
+    var barcode : String?
+    
     let formatter = NSDateFormatter()
-    let commentInstance = CommentManager.commentInstance
+    let manager = CommentManager()
+    let commodityManager = CommodityManager()
+    var commentArry : Array<Comment> = []
+    var commArray: Array<Commodity>?
+    //let commentInstance = CommentManager.ommentInstance
     var favoriteImage : UIImage?
     var id : Int?
     var toolBar:UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        commentTable.registerNib(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
-        viewAdd()
         
+        //self.commScrollView.contentSize.height += 500
+        
+        //print("\(self.commArray)* aaaaaaaa")
+        
+        commentTable.registerNib(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
         //キーボーど用
         let myKeyboard = UIView(frame: CGRectMake(0, 0, 320, 40))
         myKeyboard.backgroundColor = UIColor.darkGrayColor()
         
+        viewAdd()
+
+        // 下記を追加
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: Selector("sortArray"), forControlEvents: UIControlEvents.ValueChanged)
+        self.commentTableView.addSubview(refreshControl)
         
         // Doneボタン作成
         let myButton = UIButton(frame: CGRectMake(250, 5, 80, 30))
@@ -70,10 +91,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         commentTextField .inputAccessoryView = myKeyboard
         commentTextField.delegate = self
         
-        //self.view.addSubview(myTextfiled)
-        
         view1.frame = CGRectMake(0, 200, 400, 300)
-        //contentView.frame = CGRectMake(0, 200, 400, 300)
         
         view1.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
         
@@ -96,27 +114,38 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             count++
         }
-
+        
+        
         commentTable.delegate = self
         commentTable.dataSource = self
         updateFavorite()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let callback = { () -> Void in
+        var height : CGFloat?
+        manager.fechComment(cName.text!, callBack: { comments in
+            self.commentArry.append(comments)
             self.commentTable.reloadData()
-        }
-        commentInstance.fechComment(callback)
+            height = CGFloat(self.commentArry.count * 80)
+            //print(self.commentArry.count)
+            print(height)
+            print(self.commScrollView.contentSize.height)
+            /*if self.commScrollView.contentSize.height < height!{
+                self.commScrollView.contentSize.height += height! - self.commScrollView.contentSize.height
+            }*/
+            //self.commentScrollView.contentSize.height = height!
+            }
+        )
     }
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentInstance.comments.count
+        return commentArry.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -124,15 +153,19 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CommentTableViewCell", forIndexPath: indexPath) as! CommentTableViewCell
-        let comment = commentInstance.comments
-        //let com = CommodityManager.sheradInstance.commoditys[indexPath.row]
-        cell.commentLabel.text = comment[indexPath.row].comment
-        //print(comment)
+        cell.commentLabel.text = commentArry[indexPath.row].comment
+        UIGraphicsBeginImageContext(self.size)
+        let photo = UIImage(named: imageArray[commentArry[indexPath.row].stamp])
+        photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        cell.commentStamp.image = resizeImage
+        
         return cell
     }
     
@@ -148,75 +181,79 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
     }
-
-
+    
+    
     
     func viewAdd(){
-        //print(self.id)
-        let i = Int(id!)
-        formatter.dateFormat = "yyyy年MM月dd日"
-        let com = CommodityManager.sheradInstance.commoditys[i]
-        commImageView.image = com.photo
-        cName.text = com.cName
-        cPrice.text = "\(com.price)円"
-        cKcal.text = "\(com.calorie)Kcal"
-        //print(formatter.stringFromDate(com.day))
-        let relese = formatter.stringFromDate(com.day)
-        cRelease.text = relese
-        cMaker.text = com.maker
-        //cRelease.text = formatter.stringFromDate(com.day)
-
-    }
-
-    @IBAction func tapComment(sender: UIButton) {
-        if (commentTextField.text?.isEmpty == nil) {
-            print("", terminator: "")
-        }else{
             let i = Int(id!)
-            let content = commentTextField.text
-            let pname = CommodityManager.sheradInstance.commoditys[i].cName
-            let comment = Comment(comment: content!, pname: pname)
-            comment.save()
-            print("save", terminator: "")
-            commentTextField.text = ""
-        }
+            formatter.dateFormat = "yyyy年MM月dd日"
+            let com = CommodityManager.sheradInstance.commoditys[i]
+            commImageView.image = com.photo
+            cName.text = com.cName
+            cPrice.text = "\(com.price)円"
+            cKcal.text = "\(com.calorie)Kcal"
+            let relese = formatter.stringFromDate(com.day)
+            cRelease.text = relese
+            cMaker.text = com.maker
     }
     
-    @IBAction func favoButtonTap(sender: UIButton) {
-        //let favo: UIImage = UIImage(named: "star-on")!
-        //favoButton.setBackgroundImage(favo, forState: .Normal)
-        //print("favotapp")
-        Favorite.toggle(CommodityManager.sheradInstance.commoditys[Int(id!)].cName)
-        updateFavorite()
-    }
-    
-    func tappedToolBarBtn(sender: UIBarButtonItem) {
-        commentTextField.resignFirstResponder()
-    }
 
-    func onClick(sender : UIButton) {
-        //let subviews = self.view.subviews
-        
-        buttonImage = UIImage(named: imageArray[sender.tag])
-        buttonImageView.image = buttonImage
-        stampImage.image = buttonImage
-        self.view.endEditing(true)
-        commentTextField.inputView = nil
-        commentTextField.reloadInputViews()
-        
+@IBAction func tapComment(sender: UIButton) {
+    if (commentTextField.text?.isEmpty == nil) {
+        print("", terminator: "")
+    }else{
+        let i = Int(id!)
+        let content = commentTextField.text
+        let pname = CommodityManager.sheradInstance.commoditys[i].cName
+        let comment = Comment(comment: content!, pname: pname, stamp: self.stampIndex!)
+        comment.save()
+        self.commentArry.removeAll()
+        manager.fechComment(cName.text!, callBack: { comments in
+            self.commentArry.append(comments)
+            self.commentTable.reloadData()
+            }
+        )
+        print("save", terminator: "")
+        commentTextField.text = ""
+        stampImage.image = nil
     }
+}
+
+@IBAction func favoButtonTap(sender: UIButton) {
+    Favorite.toggle(CommodityManager.sheradInstance.commoditys[Int(id!)].cName)
+    updateFavorite()
+}
+
+func tappedToolBarBtn(sender: UIBarButtonItem) {
+    commentTextField.resignFirstResponder()
+}
+
+func onClick(sender : UIButton) {
+    buttonImage = UIImage(named: imageArray[sender.tag])
+    self.stampIndex = sender.tag
+    buttonImageView.image = buttonImage
+    stampImage.image = buttonImage
+    self.view.endEditing(true)
+    commentTextField.inputView = nil
+    commentTextField.reloadInputViews()
     
-    func onMyButton () {
-        self.view.endEditing(true )
-    }
-    
-    func stampAdd() {
-        commentTextField.inputView = view1
-        commentTextField.reloadInputViews()
-    }
-    
-    func keyBoardTap(){
-        commentTextField.inputView = nil
-        commentTextField.reloadInputViews()
-    }
+}
+
+func sortArray() {
+    self.commentTable.reloadData()
+}
+
+func onMyButton () {
+    self.view.endEditing(true )
+}
+
+func stampAdd() {
+    commentTextField.inputView = view1
+    commentTextField.reloadInputViews()
+}
+
+func keyBoardTap(){
+    commentTextField.inputView = nil
+    commentTextField.reloadInputViews()
+}
 }

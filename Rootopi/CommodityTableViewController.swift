@@ -23,19 +23,7 @@ class CommodityTableViewController: UITableViewController {
         tableView.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
-        //print(CommodityManager.sheradInstance.commoditys)
-        // load()
     }
-    
-    /*func load() {
-    let callback = { () -> Void in
-    self.tableView.reloadData()
-    
-    }
-    commodityCollection.fetcCommodity(callback)
-    //print(commodityCollection)
-    //print(callback)
-    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,8 +40,6 @@ class CommodityTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        //print(commodityCollection.commoditys.count)
-        //self.maxRow = commodityCollection.commoditys.count
         return CommodityManager.sheradInstance.commoditys.count
     }
     
@@ -64,7 +50,6 @@ class CommodityTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CommTableViewCell", forIndexPath: indexPath) as! CommTableViewCell
         let com = CommodityManager.sheradInstance.commoditys[indexPath.row]
-        //print(indexPath.row)
         print(CommodityManager.sheradInstance.commoditys.count, terminator: "")
         cell.pImageView.image = com.photo
         cell.cNameLabel.text = com.cName
@@ -74,14 +59,12 @@ class CommodityTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedRow = indexPath.row
-        //print(self.selectedRow)
         performSegueWithIdentifier("toCommViewController", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toCommViewController" {
             // 遷移先のViewContollerにセルの情報を渡す
-            //let pname = CommentManager
             let cellVC : CommViewController = segue.destinationViewController as! CommViewController
             //managerPname = CommodityManager.sheradInstance.commoditys[self.selectedRow!].cName as String
             cellVC.id = self.selectedRow

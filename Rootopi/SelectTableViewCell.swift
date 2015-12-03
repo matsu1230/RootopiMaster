@@ -1,18 +1,16 @@
 //
-//  CommentTableViewCell.swift
+//  SelectTableViewCell.swift
 //  Rootopi
 //
-//  Created by matsuuradaiki on 2015/10/20.
+//  Created by matsuuradaiki on 2015/12/02.
 //  Copyright © 2015年 matsuuradaiki. All rights reserved.
 //
 
 import UIKit
 
-class CommentTableViewCell: UITableViewCell {
+class SelectTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var commentStamp: UIImageView!
-    
+    @IBOutlet weak var shopLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

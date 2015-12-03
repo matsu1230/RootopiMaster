@@ -9,26 +9,23 @@
 import UIKit
 
 class SearchTableViewController: UITableViewController, UISearchBarDelegate {
-
-    @IBOutlet weak var mySearchBar: UISearchBar!
     
-    
+    @IBOutlet weak var mySerchbar: UISearchBar!
+    @IBOutlet var serchTable: UITableView!
     var keyWord : String?
+    let manager = CommodityManager()
+    var commArray : Array<Commodity> = []
     var yls: YahooLocalSearch = YahooLocalSearch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerNib(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchTableViewCell")
-        tableView.estimatedRowHeight = 120
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        mySearchBar.delegate = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        serchTable.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
+        serchTable.estimatedRowHeight = 120
+        serchTable.rowHeight = UITableViewAutomaticDimension
+        serchTable.delegate = self
+        serchTable.dataSource  = self
+        self.mySerchbar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,45 +37,43 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.commArray.count
     }
     
     
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        mySearchBar.text = searchText
+        self.keyWord = searchText
+        print(keyWord)
     }
     
-    /*
-    Searchボタンが押された時に呼ばれる
-    */
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        self.keyWord = mySearchBar.text!
-        print(self.keyWord)
-        for var i = 0; i < CommodityManager.sheradInstance.commoditys.count; i++ {
-            if (CommodityManager.sheradInstance.commoditys[i].cName == self.keyWord){
-                print(CommodityManager.sheradInstance.commoditys[i].cName)
-                
-            }
-        }
-    }
     
-
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CommTableViewCell", forIndexPath: indexPath) as! CommTableViewCell
 
-        // Configure the cell...
-
+        cell.cNameLabel.text = commArray[indexPath.row].cName
+        cell.pImageView.image = commArray[indexPath.row].photo
         return cell
     }
-    */
+    
 
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print(self.keyWord)
+        manager.serchKeyWord(self.keyWord!, callBack: {commoditys in
+            self.commArray.append(commoditys)
+            print(self.commArray[0].cName)
+            self.serchTable.reloadData()
+            if commoditys.cName == nil{
+                self.commArray.removeAll()
+                self.serchTable.reloadData()
+            }
+        })
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

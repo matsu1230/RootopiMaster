@@ -30,7 +30,7 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shopListTable.registerNib(UINib(nibName: "ShopTableViewCell", bundle: nil), forCellReuseIdentifier: "ShopTableViewCell")
+        shopListTable.registerNib(UINib(nibName: "SelectTableViewCell", bundle: nil), forCellReuseIdentifier: "SelectTableViewCell")
         shopListTable.delegate = self
         shopListTable.dataSource = self
         
@@ -82,8 +82,7 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ShopTableViewCell", forIndexPath: indexPath) as! ShopTableViewCell
-        //let com = CommodityManager.sheradInstance.commoditys[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("SelectTableViewCell", forIndexPath: indexPath) as! SelectTableViewCell
         let i = yls.total
         if i  > indexPath.row {
             cell.shopLabel.text = yls.shops[indexPath.row].name!
@@ -97,7 +96,6 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedRow = indexPath.row
-        //print(self.selectedRow)
         performSegueWithIdentifier("toMapSubmit", sender: nil)
     }
     
