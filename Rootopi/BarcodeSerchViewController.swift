@@ -99,9 +99,11 @@ class BarcodeSerchViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toCommView" {
-            let commVC : CommViewController = segue.destinationViewController as! CommViewController
-            commVC.id = self.id
+        if self.id != nil {
+            if segue.identifier == "toCommView" {
+                let commVC : CommViewController = segue.destinationViewController as! CommViewController
+                commVC.id = self.id
+            }
         }
     }
     

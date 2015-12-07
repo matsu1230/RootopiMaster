@@ -23,11 +23,13 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var cMaker: UILabel!
     @IBOutlet weak var cName: UILabel!
     @IBOutlet weak var stampImage: UIImageView!
-    @IBOutlet weak var commentScrollView: UIScrollView!
+    //@IBOutlet weak var commentScrollView: UIScrollView!
+    //@IBOutlet weak var commentView: UIView!
     @IBOutlet weak var commScrollView: UIScrollView!
     
     
     let view1 = UIView()
+    let refreshControl = UIRefreshControl()
     let contentView = UIView()
     let buttonImageView = UIImageView()
     let button1 = UIButton()
@@ -51,14 +53,11 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var favoriteImage : UIImage?
     var id : Int?
     var toolBar:UIToolbar!
-    
+    var i = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.commScrollView.contentSize.height += 500
-        
-        //print("\(self.commArray)* aaaaaaaa")
-        
+        print(self.id)
         commentTable.registerNib(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
         //キーボーど用
         let myKeyboard = UIView(frame: CGRectMake(0, 0, 320, 40))
@@ -67,10 +66,8 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         viewAdd()
 
         // 下記を追加
-        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: Selector("sortArray"), forControlEvents: UIControlEvents.ValueChanged)
-        self.commentTableView.addSubview(refreshControl)
-        
+        commentTable.addSubview(refreshControl)
         // Doneボタン作成
         let myButton = UIButton(frame: CGRectMake(250, 5, 80, 30))
         let stampButton = UIButton(frame: CGRectMake(5,5, 90, 30))
@@ -118,6 +115,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         commentTable.delegate = self
         commentTable.dataSource = self
+        //commentTable.refreshControl
         updateFavorite()
     }
     
@@ -132,13 +130,8 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.commentArry.append(comments)
             self.commentTable.reloadData()
             height = CGFloat(self.commentArry.count * 80)
-            //print(self.commentArry.count)
             print(height)
             print(self.commScrollView.contentSize.height)
-            /*if self.commScrollView.contentSize.height < height!{
-                self.commScrollView.contentSize.height += height! - self.commScrollView.contentSize.height
-            }*/
-            //self.commentScrollView.contentSize.height = height!
             }
         )
     }
@@ -188,6 +181,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let i = Int(id!)
             formatter.dateFormat = "yyyy年MM月dd日"
             let com = CommodityManager.sheradInstance.commoditys[i]
+            print(com.cName)
             commImageView.image = com.photo
             cName.text = com.cName
             cPrice.text = "\(com.price)円"
@@ -202,17 +196,28 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     if (commentTextField.text?.isEmpty == nil) {
         print("", terminator: "")
     }else{
-        let i = Int(id!)
-        let content = commentTextField.text
+        if id != nil {
+            i = Int(id!)
+        }
+        var content = commentTextField.text
+        if content == nil {
+            content = " "
+        }
+        
+        if stampIndex == nil {
+            stampIndex = 0
+        }
         let pname = CommodityManager.sheradInstance.commoditys[i].cName
         let comment = Comment(comment: content!, pname: pname, stamp: self.stampIndex!)
         comment.save()
-        self.commentArry.removeAll()
+        //sleep(1)
+        //sortArray()
         manager.fechComment(cName.text!, callBack: { comments in
             self.commentArry.append(comments)
             self.commentTable.reloadData()
             }
         )
+        print(cName.text!)
         print("save", terminator: "")
         commentTextField.text = ""
         stampImage.image = nil
@@ -240,7 +245,16 @@ func onClick(sender : UIButton) {
 }
 
 func sortArray() {
-    self.commentTable.reloadData()
+    //self.viewDidAppear(true)
+    self.commentArry.removeAll()
+    manager.fechComment(cName.text!, callBack: { comments in
+        self.commentArry.append(comments)
+        self.commentTable.reloadData()
+        print(self.commentArry.count)
+        print(self.commScrollView.contentSize.height)
+        self.refreshControl.endRefreshing()
+        }
+    )
 }
 
 func onMyButton () {

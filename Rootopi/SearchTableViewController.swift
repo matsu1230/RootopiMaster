@@ -8,24 +8,54 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchBarDelegate {
+class SearchTableViewController: UITableViewController {
     
-    @IBOutlet weak var mySerchbar: UISearchBar!
-    @IBOutlet var serchTable: UITableView!
+    //@IBOutlet weak var mySerchbar: UISearchBar!
+    //@IBOutlet var serchTable: UITableView!
     var keyWord : String?
+    let commodity = CommodityManager.sheradInstance
     let manager = CommodityManager()
     var commArray : Array<Commodity> = []
-    var yls: YahooLocalSearch = YahooLocalSearch()
+    var selectedRow : Int?
+    var id : Int?
+    var category : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        serchTable.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
-        serchTable.estimatedRowHeight = 120
-        serchTable.rowHeight = UITableViewAutomaticDimension
-        serchTable.delegate = self
-        serchTable.dataSource  = self
-        self.mySerchbar.delegate = self
+        //print(self.category)
+        
+        self.tableView.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
+        self.tableView.estimatedRowHeight = 120
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.commArray.removeAll()
+        if category != nil {
+        manager.serchCategory(self.category!, callBack: {commoditys in
+            self.commArray.append(commoditys)
+            self.tableView.reloadData()
+            if commoditys.cName == nil{
+                self.tableView.reloadData()
+            }
+        })
+        }else if keyWord != nil {
+            manager.serchKeyWord(self.keyWord!, callBack: {commoditys in
+                self.commArray.append(commoditys)
+                self.tableView.reloadData()
+                if commoditys.cName == nil{
+                    self.tableView.reloadData()
+                }
+            })
+            if self.commArray.isEmpty {
+                manager.serchMekar(self.keyWord!, callBack: {commoditys in
+                    self.commArray.append(commoditys)
+                    print(self.commArray.count)
+                    self.tableView.reloadData()
+                    if commoditys.cName == nil{
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,33 +77,67 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
     
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         self.keyWord = searchText
         print(keyWord)
-    }
+    }*/
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CommTableViewCell", forIndexPath: indexPath) as! CommTableViewCell
-
         cell.cNameLabel.text = commArray[indexPath.row].cName
         cell.pImageView.image = commArray[indexPath.row].photo
+        if commArray.isEmpty {
+            cell.cNameLabel.text = ""
+            cell.pImageView.image = nil
+        }
         return cell
     }
     
-
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedRow = indexPath.row
+        for var i = 0; i < commodity.commoditys.count; i++ {
+            if (commArray[self.selectedRow!].cName == commodity.commoditys[i].cName) {
+                self.id = i
+            }
+        }
+        performSegueWithIdentifier("toComm", sender: nil)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toComm" {
+            let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            comVC.id = self.id
+        }
+    }
+    
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromFavorite" {
+            let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            comVC.id = self.id
+        }
+    }*/
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            comVC.id = self.id
+    }*/
+    
+    /*func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print(self.keyWord)
+        self.commArray.removeAll()
         manager.serchKeyWord(self.keyWord!, callBack: {commoditys in
             self.commArray.append(commoditys)
             print(self.commArray[0].cName)
             self.serchTable.reloadData()
             if commoditys.cName == nil{
                 self.commArray.removeAll()
+                //self.serchTable.cell
                 self.serchTable.reloadData()
             }
         })
-    }
+    }*/
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
