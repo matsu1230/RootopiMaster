@@ -54,11 +54,6 @@ class DownloadsViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //self.flg = load()
-        let callback = { () -> Void in
-            //self.makeTableData()
-            //self.viewDidAppear(true)
-        }
-        commodityCollection.fetcCommodity(callback)
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,9 +64,18 @@ class DownloadsViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         //print(false)
-        self.makeTableData()
         //self.transition()
+        self.makeTableData()
         
+        let callback = { () -> Void in
+            if self.count == 3 {
+            self.transition()
+            }
+            self.count += 1
+        }
+        commodityCollection.fetcCommodity(callback)
+
+
     }
     
     
@@ -125,7 +129,6 @@ class DownloadsViewController: UIViewController {
                 DownloadsViewController.tumblrBodys[i] = replaceStringBody
             }
         })
-        self.transition()
         task.resume()
     }
 }

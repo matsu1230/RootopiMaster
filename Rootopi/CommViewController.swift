@@ -138,7 +138,13 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.commentArry.count == 0 {
+        return 10
+        } else if commentArry.count < 5 {
+            return commentArry.count + 5
+        } else {
         return commentArry.count
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -151,6 +157,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CommentTableViewCell", forIndexPath: indexPath) as! CommentTableViewCell
+        if commentArry.count != 0 && (indexPath.row < commentArry.count){
         cell.commentLabel.text = commentArry[indexPath.row].comment
         UIGraphicsBeginImageContext(self.size)
         let photo = UIImage(named: imageArray[commentArry[indexPath.row].stamp])
@@ -158,6 +165,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         cell.commentStamp.image = resizeImage
+        }
         
         return cell
     }
@@ -212,6 +220,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         comment.save()
         //sleep(1)
         //sortArray()
+        self.commentArry.removeAll()
         manager.fechComment(cName.text!, callBack: { comments in
             self.commentArry.append(comments)
             self.commentTable.reloadData()

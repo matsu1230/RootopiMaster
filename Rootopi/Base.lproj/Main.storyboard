@@ -190,7 +190,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-S7-LJf">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-S7-LJf">
                                 <rect key="frame" x="157" y="310" width="60" height="30"/>
                                 <animations/>
                                 <state key="normal" title="検索する"/>
@@ -444,8 +444,8 @@
         <!--ホーム-->
         <scene sceneID="ZzK-dz-2W0">
             <objects>
-                <navigationController storyboardIdentifier="Home" id="Gr9-gg-hh3" customClass="HomeNavigationViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" enabled="NO" title="ホーム" image="home" id="nqY-oF-kny"/>
+                <navigationController storyboardIdentifier="Home" id="Gr9-gg-hh3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ホーム" id="nqY-oF-kny"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vpI-FR-vKl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1714,17 +1714,17 @@
                         <viewControllerLayoutGuide type="bottom" id="7Sq-Z1-Mx4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7CS-D1-EFO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="993"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-Fw-kNK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-Fw-kNK">
                                 <rect key="frame" x="0.0" y="-32" width="375" height="650"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2l-qM-2lP">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xad-Dv-R7X">
-                                                <rect key="frame" x="72" y="265" width="235" height="38"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xad-Dv-R7X">
+                                                <rect key="frame" x="72" y="265" width="235" height="66"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1931,7 +1931,7 @@
                                             <constraint firstItem="dN8-zO-E95" firstAttribute="leading" secondItem="v1D-Ie-DUX" secondAttribute="trailing" constant="8" symbolic="YES" id="1Te-ZZ-Rs0"/>
                                             <constraint firstItem="UsI-iC-AMz" firstAttribute="leading" secondItem="XAd-DH-1YE" secondAttribute="leading" id="4cl-sB-VOs"/>
                                             <constraint firstItem="bFw-Df-ZyW" firstAttribute="leading" secondItem="eSS-DU-18B" secondAttribute="leading" id="5Fm-Vm-fUn"/>
-                                            <constraint firstItem="Dji-9H-Dx3" firstAttribute="top" secondItem="Xad-Dv-R7X" secondAttribute="bottom" constant="2" id="5p5-of-6z5"/>
+                                            <constraint firstItem="Dji-9H-Dx3" firstAttribute="top" secondItem="Xad-Dv-R7X" secondAttribute="bottom" constant="-26" id="5p5-of-6z5"/>
                                             <constraint firstAttribute="trailing" secondItem="DV7-ju-hkp" secondAttribute="trailing" constant="16" id="6vm-9c-g6j"/>
                                             <constraint firstItem="UsI-iC-AMz" firstAttribute="top" secondItem="Ths-de-RQI" secondAttribute="bottom" constant="18" id="ArR-a5-TcH"/>
                                             <constraint firstAttribute="bottom" secondItem="fyd-6b-f7k" secondAttribute="bottom" constant="338" id="Ca9-Z0-dh9"/>
@@ -2078,7 +2078,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juP-n9-9Cb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3057.5" y="609.5"/>
+            <point key="canvasLocation" x="3260" y="795"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jjc-nC-e4Q">
@@ -2526,17 +2526,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="50" height="49"/>
         <image name="star-on" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="MUg-b3-vbZ"/>
         <segue reference="zED-EO-iBu"/>
         <segue reference="xsD-GG-dIb"/>
-        <segue reference="wDk-uV-yWL"/>
-        <segue reference="fmF-SX-Utc"/>
+        <segue reference="JCM-JE-RrQ"/>
+        <segue reference="qhE-PO-A9a"/>
+        <segue reference="RN2-cj-S8o"/>
         <segue reference="Lbn-Ho-xmG"/>
-        <segue reference="7VE-LN-I7y"/>
-        <segue reference="Xlb-8v-Dnq"/>
-        <segue reference="mkh-u3-eNi"/>
+        <segue reference="3dN-10-AjV"/>
     </inferredMetricsTieBreakers>
 </document>
