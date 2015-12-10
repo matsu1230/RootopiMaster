@@ -45,7 +45,6 @@
 		D386B3C91BE8EADC00BB89B6 /* MapSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3C81BE8EADC00BB89B6 /* MapSave.swift */; };
 		D386B3CB1BE8F76900BB89B6 /* MapFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */; };
 		D386B3CD1BE8F81100BB89B6 /* BarcodeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CC1BE8F81100BB89B6 /* BarcodeNavigationController.swift */; };
-		D386B3CF1BE8F8E800BB89B6 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CE1BE8F8E800BB89B6 /* HomeNavigationViewController.swift */; };
 		D386B3D31BE9010900BB89B6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3D21BE9010900BB89B6 /* TabBarViewController.swift */; };
 		D39698D61BE0679E0054898C /* TumblrTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39698D51BE0679E0054898C /* TumblrTableViewController.swift */; };
 		D39698D91BE06AC70054898C /* TumblrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39698D71BE06AC70054898C /* TumblrTableViewCell.swift */; };
@@ -53,6 +52,9 @@
 		D39698DC1BE0727F0054898C /* TumblrManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39698DB1BE0727F0054898C /* TumblrManager.swift */; };
 		D39698DE1BE074BE0054898C /* Tumblr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39698DD1BE074BE0054898C /* Tumblr.swift */; };
 		D39908AB1C14A2C90020C5AC /* SerchSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908AA1C14A2C90020C5AC /* SerchSelectTableViewController.swift */; };
+		D39908B11C19CB2E0020C5AC /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B01C19CB2E0020C5AC /* HomeNavigationViewController.swift */; };
+		D39908B31C19D7FC0020C5AC /* BarcodeTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B21C19D7FC0020C5AC /* BarcodeTopViewController.swift */; };
+		D39908B51C19DC1F0020C5AC /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B41C19DC1F0020C5AC /* MenuTableViewController.swift */; };
 		D3A3F2621BDDCC5500ABE69A /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3F2611BDDCC5500ABE69A /* Favorite.swift */; };
 		D3A944451BCC89CB00926026 /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944441BCC89CB00926026 /* Commodity.swift */; };
 		D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944461BCC8CF300926026 /* CommodityManager.swift */; };
@@ -127,7 +129,6 @@
 		D386B3C81BE8EADC00BB89B6 /* MapSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSave.swift; sourceTree = "<group>"; };
 		D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFinishViewController.swift; sourceTree = "<group>"; };
 		D386B3CC1BE8F81100BB89B6 /* BarcodeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeNavigationController.swift; sourceTree = "<group>"; };
-		D386B3CE1BE8F8E800BB89B6 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		D386B3D21BE9010900BB89B6 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D39698D51BE0679E0054898C /* TumblrTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrTableViewController.swift; sourceTree = "<group>"; };
 		D39698D71BE06AC70054898C /* TumblrTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +136,9 @@
 		D39698DB1BE0727F0054898C /* TumblrManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumblrManager.swift; sourceTree = "<group>"; };
 		D39698DD1BE074BE0054898C /* Tumblr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tumblr.swift; sourceTree = "<group>"; };
 		D39908AA1C14A2C90020C5AC /* SerchSelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerchSelectTableViewController.swift; sourceTree = "<group>"; };
+		D39908B01C19CB2E0020C5AC /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
+		D39908B21C19D7FC0020C5AC /* BarcodeTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeTopViewController.swift; sourceTree = "<group>"; };
+		D39908B41C19DC1F0020C5AC /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		D3A3F2611BDDCC5500ABE69A /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		D3A944441BCC89CB00926026 /* Commodity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		D3A944461BCC8CF300926026 /* CommodityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityManager.swift; sourceTree = "<group>"; };
@@ -236,7 +240,6 @@
 				D31BAEA51BD9D71100CE6BB4 /* MapDetailViewController.swift */,
 				D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */,
 				D386B3CC1BE8F81100BB89B6 /* BarcodeNavigationController.swift */,
-				D386B3CE1BE8F8E800BB89B6 /* HomeNavigationViewController.swift */,
 				D33CC3EC1BF241120028A7B0 /* Rootopi-Bridging-Header.h */,
 				D33CC3EF1BF2D43E0028A7B0 /* SearchTableViewController.swift */,
 				D33CC3F11BF2D48C0028A7B0 /* SearchTableViewCell.swift */,
@@ -245,6 +248,9 @@
 				D3DC44101C0E8719004003AC /* SelectTableViewCell.xib */,
 				D36F2D601C10717100E3BF9E /* BarcodeSerchViewController.swift */,
 				D39908AA1C14A2C90020C5AC /* SerchSelectTableViewController.swift */,
+				D39908B01C19CB2E0020C5AC /* HomeNavigationViewController.swift */,
+				D39908B21C19D7FC0020C5AC /* BarcodeTopViewController.swift */,
+				D39908B41C19DC1F0020C5AC /* MenuTableViewController.swift */,
 			);
 			path = Rootopi;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				D39698DC1BE0727F0054898C /* TumblrManager.swift in Sources */,
 				D386B3C71BE8DD9D00BB89B6 /* MapSubmitViewController.swift in Sources */,
 				D3A3F2621BDDCC5500ABE69A /* Favorite.swift in Sources */,
+				D39908B51C19DC1F0020C5AC /* MenuTableViewController.swift in Sources */,
 				D35D02601C075AD200726586 /* Barcode.swift in Sources */,
 				D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */,
 				D30E42AC1C0DF91E000B2D2F /* Maps.swift in Sources */,
@@ -520,6 +527,8 @@
 				D31694A31BC7806F0065A6C3 /* AppDelegate.swift in Sources */,
 				D36F31D01BE7666D00A40107 /* SelectViewController.swift in Sources */,
 				D3C90EC51BFC249200827250 /* MapManeger.swift in Sources */,
+				D39908B11C19CB2E0020C5AC /* HomeNavigationViewController.swift in Sources */,
+				D39908B31C19D7FC0020C5AC /* BarcodeTopViewController.swift in Sources */,
 				D302412A1BDF0E7000C2DB74 /* FavoriteTableViewController.swift in Sources */,
 				D30241321BDF6A7A00C2DB74 /* FavoriteNavigationController.swift in Sources */,
 				D39908AB1C14A2C90020C5AC /* SerchSelectTableViewController.swift in Sources */,
@@ -528,7 +537,6 @@
 				D386B3CD1BE8F81100BB89B6 /* BarcodeNavigationController.swift in Sources */,
 				D36F31D51BE7A86F00A40107 /* ShopTableViewCell.swift in Sources */,
 				D33CC3F01BF2D43E0028A7B0 /* SearchTableViewController.swift in Sources */,
-				D386B3CF1BE8F8E800BB89B6 /* HomeNavigationViewController.swift in Sources */,
 				D36E10561BCDF52400CFDCAE /* CommTableViewCell.swift in Sources */,
 				D36F2D611C10717100E3BF9E /* BarcodeSerchViewController.swift in Sources */,
 				D386B3CB1BE8F76900BB89B6 /* MapFinishViewController.swift in Sources */,

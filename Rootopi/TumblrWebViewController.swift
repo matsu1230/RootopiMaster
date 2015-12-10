@@ -21,6 +21,8 @@ class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDe
     override func viewDidLoad() {
         super.viewDidLoad()
         print(self.url)
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         //print(image)
         //self.imageView.image = image!
         openUrl(url!)

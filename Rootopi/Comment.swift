@@ -22,6 +22,7 @@ class Comment {
     
     func save(){
         let commentObject = PFObject(className: "C_Table")
+        //commentObject.
         commentObject["comment"] = self.comment
         commentObject["cName"] = self.pName
         commentObject["stamp"] = self.stamp

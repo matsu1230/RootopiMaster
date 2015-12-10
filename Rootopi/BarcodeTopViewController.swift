@@ -1,18 +1,20 @@
 //
-//  BarcodeNavigationController.swift
+//  BarcodeTopViewController.swift
 //  Rootopi
 //
-//  Created by matsuuradaiki on 2015/11/03.
+//  Created by matsuuradaiki on 2015/12/11.
 //  Copyright © 2015年 matsuuradaiki. All rights reserved.
 //
 
 import UIKit
 
-class BarcodeNavigationController: UINavigationController {
+class BarcodeTopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        navigationItem.titleView = titleImageView
         // Do any additional setup after loading the view.
     }
 

@@ -12,7 +12,8 @@ class MapFinishViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         // Do any additional setup after loading the view.
     }
 

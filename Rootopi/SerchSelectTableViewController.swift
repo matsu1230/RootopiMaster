@@ -15,10 +15,13 @@ class SerchSelectTableViewController: UITableViewController, UISearchBarDelegate
     
     var selectedRow : Int?
     var keyWord: String?
+    var category : String?
     
     var catgoryArray = ["チョコ・飴・ガム・グミ","クッキー・ビスケット・パイ","スナック・せんべい・駄菓子","おつまみ・ドライフルーツ","アイス・シャーベット","清涼飲料水・炭酸飲料水","コーヒー飲料・乳飲料"]
     
     override func viewDidLoad() {
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         super.viewDidLoad()
         self.commSerchBar.delegate = self
         ///print(self.serchTable.c)
@@ -34,6 +37,7 @@ class SerchSelectTableViewController: UITableViewController, UISearchBarDelegate
         print(indexPath.section)
         if(indexPath.section == 0){
             print(self.catgoryArray[indexPath.row])
+            category = self.catgoryArray[self.selectedRow!]
             performSegueWithIdentifier("toSerch", sender: nil)
         }
 
@@ -44,8 +48,6 @@ class SerchSelectTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        //myLabel.text = "Searching"
-        //mySearchBar.text = ""
         keyWord = commSerchBar.text
         performSegueWithIdentifier("toSerch", sender: nil)
         self.view.endEditing(true)
@@ -55,10 +57,14 @@ class SerchSelectTableViewController: UITableViewController, UISearchBarDelegate
         if segue.identifier == "toSerch" {
             // 遷移先のViewContollerにセルの情報を渡す
             let cellVC : SearchTableViewController = segue.destinationViewController as! SearchTableViewController
-            if selectedRow != nil{
-            cellVC.category = self.catgoryArray[self.selectedRow!]
+            if category != nil{
+                cellVC.category = self.category
+                category = nil
             }else if keyWord != nil {
+                cellVC.category = nil
                 cellVC.keyWord = self.keyWord
+                keyWord = nil
+
             }
         }
     }

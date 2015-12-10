@@ -2,7 +2,7 @@
 //  HomeNavigationViewController.swift
 //  Rootopi
 //
-//  Created by matsuuradaiki on 2015/11/03.
+//  Created by matsuuradaiki on 2015/12/11.
 //  Copyright © 2015年 matsuuradaiki. All rights reserved.
 //
 
@@ -12,7 +12,8 @@ class HomeNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         // Do any additional setup after loading the view.
     }
 

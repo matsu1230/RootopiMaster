@@ -17,6 +17,8 @@ class TumblrTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //makeTableData()
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         tableView.registerNib(UINib(nibName: "TumblrTableViewCell", bundle: nil), forCellReuseIdentifier: "TumblrTableViewCell")
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension

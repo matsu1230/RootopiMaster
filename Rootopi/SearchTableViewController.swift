@@ -10,8 +10,6 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
     
-    //@IBOutlet weak var mySerchbar: UISearchBar!
-    //@IBOutlet var serchTable: UITableView!
     var keyWord : String?
     let commodity = CommodityManager.sheradInstance
     let manager = CommodityManager()
@@ -22,21 +20,22 @@ class SearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //print(self.category)
         
+        //print(self.category)
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         self.tableView.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
         self.tableView.estimatedRowHeight = 120
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.commArray.removeAll()
         if category != nil {
-        manager.serchCategory(self.category!, callBack: {commoditys in
-            self.commArray.append(commoditys)
-            self.tableView.reloadData()
-            if commoditys.cName == nil{
+            manager.serchCategory(self.category!, callBack: {commoditys in
+                self.commArray.append(commoditys)
                 self.tableView.reloadData()
-            }
-        })
+                if commoditys.cName == nil{
+                    self.tableView.reloadData()
+                }
+            })
         }else if keyWord != nil {
             manager.serchKeyWord(self.keyWord!, callBack: {commoditys in
                 self.commArray.append(commoditys)
@@ -57,30 +56,23 @@ class SearchTableViewController: UITableViewController {
             }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.commArray.count
     }
-    
-    
-    
-    /*func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        self.keyWord = searchText
-        print(keyWord)
-    }*/
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -113,74 +105,74 @@ class SearchTableViewController: UITableViewController {
     }
     
     /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "fromFavorite" {
-            let comVC : CommViewController = segue.destinationViewController as! CommViewController
-            comVC.id = self.id
-        }
+    if segue.identifier == "fromFavorite" {
+    let comVC : CommViewController = segue.destinationViewController as! CommViewController
+    comVC.id = self.id
+    }
     }*/
     /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            let comVC : CommViewController = segue.destinationViewController as! CommViewController
-            comVC.id = self.id
+    let comVC : CommViewController = segue.destinationViewController as! CommViewController
+    comVC.id = self.id
     }*/
     
     /*func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print(self.keyWord)
-        self.commArray.removeAll()
-        manager.serchKeyWord(self.keyWord!, callBack: {commoditys in
-            self.commArray.append(commoditys)
-            print(self.commArray[0].cName)
-            self.serchTable.reloadData()
-            if commoditys.cName == nil{
-                self.commArray.removeAll()
-                //self.serchTable.cell
-                self.serchTable.reloadData()
-            }
-        })
+    print(self.keyWord)
+    self.commArray.removeAll()
+    manager.serchKeyWord(self.keyWord!, callBack: {commoditys in
+    self.commArray.append(commoditys)
+    print(self.commArray[0].cName)
+    self.serchTable.reloadData()
+    if commoditys.cName == nil{
+    self.commArray.removeAll()
+    //self.serchTable.cell
+    self.serchTable.reloadData()
+    }
+    })
     }*/
     
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    // Return false if you do not want the specified item to be editable.
+    return true
     }
     */
-
+    
     /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    if editingStyle == .Delete {
+    // Delete the row from the data source
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    } else if editingStyle == .Insert {
+    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
     }
     */
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    // Return false if you do not want the item to be re-orderable.
+    return true
     }
     */
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

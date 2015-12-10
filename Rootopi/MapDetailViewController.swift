@@ -29,6 +29,10 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     var array: Array<Maps> = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        navigationItem.titleView = titleImageView
+
         // 現在地を取得します
 
         myMap.delegate = self

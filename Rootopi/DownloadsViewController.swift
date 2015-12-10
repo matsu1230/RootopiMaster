@@ -52,6 +52,9 @@ class DownloadsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let topImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+        topImageView.image = UIImage(named: "toppage")
+        self.view.addSubview(topImageView)
         // Do any additional setup after loading the view, typically from a nib.
         //self.flg = load()
     }

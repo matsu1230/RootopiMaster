@@ -20,7 +20,8 @@ class TumblrViewController: UIViewController {
         super.viewDidLoad()
         
         viewSet()
-        
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.titleView = titleImageView
         print(id!)
         // Do any additional setup after loading the view.
     }

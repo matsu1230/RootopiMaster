@@ -22,11 +22,13 @@ class TopViewController: UIViewController {
     
     let commodityCollection = CommodityManager.sheradInstance
     var count: Int = 0
+    let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.myScrollView.contentSize.height = 1300
+        //self.navigationController = HomeNavigationViewController
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationItem.titleView = titleImageView
         let callback = { () -> Void in
             self.viewDidAppear(true)
             
@@ -79,6 +81,7 @@ class TopViewController: UIViewController {
         if segue.identifier == "toComView" {
             // 遷移先のViewContollerにセルの情報を渡す
             let vc : CommViewController = segue.destinationViewController as! CommViewController
+            vc.navigationController?.navigationItem.titleView = titleImageView
             vc.id = self.id
         }else if segue.identifier == "toTumblrView" {
             let vc :TumblrViewController = segue.destinationViewController as! TumblrViewController

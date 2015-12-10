@@ -20,6 +20,9 @@ class FavoriteTableViewController: UIViewController, UITableViewDataSource, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        navigationItem.titleView = titleImageView
         favoTable.registerNib(UINib(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: "FavoriteTableViewCell")
         favoTable.delegate = self
         favoTable.dataSource = self

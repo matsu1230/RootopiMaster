@@ -13,6 +13,8 @@ class FavoriteNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        navigationItem.titleView = titleImageView
     }
 
     override func didReceiveMemoryWarning() {
