@@ -51,8 +51,9 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var favoriteImage : UIImage?
     var id : Int?
     var toolBar:UIToolbar!
-    var i = 0
     
+    var i = 0
+    var favoCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +174,22 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func updateFavorite(){
+        
+        if favoCount == 0 {
+        let query = PFQuery(className:"P_Table")
+        query.whereKey("pName", containsString: self.cName.text)
+        query.getFirstObjectInBackgroundWithBlock {
+            (objects: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let objects = objects {
+                objects.incrementKey("rank")
+                objects.saveInBackground()
+            }
+            
+        }
+            favoCount = 1
+        }
         if Favorite.inFavorites(CommodityManager.sheradInstance.commoditys[Int(id!)].cName) {
             // お気に入りに入っている
             self.favoriteImage = UIImage(named: "star-on")!
@@ -193,6 +210,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             self.favoriteImage = UIImage(named: "star-off")
             favoButton.setBackgroundImage(favoriteImage, forState: .Normal)
+            favoCount = 0
         }
         
     }

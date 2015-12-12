@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class CommodityTableViewController: UITableViewController {
     
     
-    //letvarmmodityCollection = CommodityManager.sheradInstance
+    let cmmodityCollection = CommodityManager.sheradInstance
     var selectedRow: Int?
     var maxRow: Int?
     //var managerPname = CommentManager.pName
@@ -66,6 +67,18 @@ class CommodityTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toCommViewController" {
+            let query = PFQuery(className:"P_Table")
+            query.whereKey("pName", containsString: CommodityManager.sheradInstance.commoditys[self.selectedRow!].cName)
+            query.getFirstObjectInBackgroundWithBlock {
+                (objects: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                } else if let objects = objects {
+                    objects.incrementKey("Viewrank")
+                    objects.saveInBackground()
+                }
+                
+            }
             // 遷移先のViewContollerにセルの情報を渡す
             let cellVC : CommViewController = segue.destinationViewController as! CommViewController
             //managerPname = CommodityManager.sheradInstance.commoditys[self.selectedRow!].cName as String

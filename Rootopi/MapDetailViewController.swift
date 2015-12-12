@@ -167,7 +167,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         
     }
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
         // rendererを生成.
         let myCircleView: MKCircleRenderer = MKCircleRenderer(overlay: overlay)

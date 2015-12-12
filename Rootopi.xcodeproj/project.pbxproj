@@ -55,6 +55,9 @@
 		D39908B11C19CB2E0020C5AC /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B01C19CB2E0020C5AC /* HomeNavigationViewController.swift */; };
 		D39908B31C19D7FC0020C5AC /* BarcodeTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B21C19D7FC0020C5AC /* BarcodeTopViewController.swift */; };
 		D39908B51C19DC1F0020C5AC /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B41C19DC1F0020C5AC /* MenuTableViewController.swift */; };
+		D39908B71C1A84B10020C5AC /* RankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908B61C1A84B10020C5AC /* RankViewController.swift */; };
+		D39908BC1C1AA2C30020C5AC /* RankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39908BA1C1AA2C30020C5AC /* RankTableViewCell.swift */; };
+		D39908BD1C1AA2C30020C5AC /* RankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D39908BB1C1AA2C30020C5AC /* RankTableViewCell.xib */; };
 		D3A3F2621BDDCC5500ABE69A /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A3F2611BDDCC5500ABE69A /* Favorite.swift */; };
 		D3A944451BCC89CB00926026 /* Commodity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944441BCC89CB00926026 /* Commodity.swift */; };
 		D3A944471BCC8CF300926026 /* CommodityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A944461BCC8CF300926026 /* CommodityManager.swift */; };
@@ -139,6 +142,9 @@
 		D39908B01C19CB2E0020C5AC /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		D39908B21C19D7FC0020C5AC /* BarcodeTopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeTopViewController.swift; sourceTree = "<group>"; };
 		D39908B41C19DC1F0020C5AC /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		D39908B61C1A84B10020C5AC /* RankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankViewController.swift; sourceTree = "<group>"; };
+		D39908BA1C1AA2C30020C5AC /* RankTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankTableViewCell.swift; sourceTree = "<group>"; };
+		D39908BB1C1AA2C30020C5AC /* RankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankTableViewCell.xib; sourceTree = "<group>"; };
 		D3A3F2611BDDCC5500ABE69A /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		D3A944441BCC89CB00926026 /* Commodity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commodity.swift; sourceTree = "<group>"; };
 		D3A944461BCC8CF300926026 /* CommodityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommodityManager.swift; sourceTree = "<group>"; };
@@ -251,6 +257,9 @@
 				D39908B01C19CB2E0020C5AC /* HomeNavigationViewController.swift */,
 				D39908B21C19D7FC0020C5AC /* BarcodeTopViewController.swift */,
 				D39908B41C19DC1F0020C5AC /* MenuTableViewController.swift */,
+				D39908B61C1A84B10020C5AC /* RankViewController.swift */,
+				D39908BA1C1AA2C30020C5AC /* RankTableViewCell.swift */,
+				D39908BB1C1AA2C30020C5AC /* RankTableViewCell.xib */,
 			);
 			path = Rootopi;
 			sourceTree = "<group>";
@@ -434,6 +443,7 @@
 				D36F31D61BE7A86F00A40107 /* ShopTableViewCell.xib in Resources */,
 				D3DC44121C0E8719004003AC /* SelectTableViewCell.xib in Resources */,
 				D31694A81BC7806F0065A6C3 /* Main.storyboard in Resources */,
+				D39908BD1C1AA2C30020C5AC /* RankTableViewCell.xib in Resources */,
 				D36E86A61BD625050060C004 /* CommentTableViewCell.xib in Resources */,
 				D302412E1BDF0E8500C2DB74 /* FavoriteTableViewCell.xib in Resources */,
 				D39698DA1BE06AC70054898C /* TumblrTableViewCell.xib in Resources */,
@@ -514,6 +524,7 @@
 				D346536B1BE4953300EBF405 /* TumblrWebViewController.swift in Sources */,
 				D3FA9D2C1BD4D8B100207760 /* DownloadsViewController.swift in Sources */,
 				D39698D61BE0679E0054898C /* TumblrTableViewController.swift in Sources */,
+				D39908BC1C1AA2C30020C5AC /* RankTableViewCell.swift in Sources */,
 				D39698DC1BE0727F0054898C /* TumblrManager.swift in Sources */,
 				D386B3C71BE8DD9D00BB89B6 /* MapSubmitViewController.swift in Sources */,
 				D3A3F2621BDDCC5500ABE69A /* Favorite.swift in Sources */,
@@ -548,6 +559,7 @@
 				D31694D11BC7F07D0065A6C3 /* CommodityTableViewController.swift in Sources */,
 				D36F31CE1BE753A500A40107 /* BarCodeViewController.swift in Sources */,
 				D386B3C91BE8EADC00BB89B6 /* MapSave.swift in Sources */,
+				D39908B71C1A84B10020C5AC /* RankViewController.swift in Sources */,
 				D3DC44111C0E8719004003AC /* SelectTableViewCell.swift in Sources */,
 				D36E86AD1BD67DB40060C004 /* CommentManager.swift in Sources */,
 				D3A944451BCC89CB00926026 /* Commodity.swift in Sources */,

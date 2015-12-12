@@ -13,6 +13,7 @@ import Parse
 class CommodityManager {
     
     var commoditys: Array<Commodity> = []
+    var rankCommodity : Array<Commodity> = []
     var barcodeSerch: Array<Barcode> = []
     static let sheradInstance = CommodityManager()
     let size = CGSize(width: 100, height: 100)
@@ -171,6 +172,71 @@ class CommodityManager {
     }
     
     
-    
+    func serchRanl(callBack:  Array<Commodity> -> Void) -> Void{
+        let query = PFQuery(className: "P_Table")
+        query.orderByDescending("rank")
+        query.limit = 10
+        query.findObjectsInBackgroundWithBlock {(commoditys, error) -> Void in
+            if error == nil {
+                self.rankCommodity = []
+                for commodity in commoditys!{
+                    let name = commodity["pName"] as! String
+                    let day = commodity["day"] as! NSDate
+                    let price = commodity["price"] as! Int
+                    let maker = commodity["maker"] as! String
+                    let calorie = commodity["calorie"] as! Int
+                    let barcode = commodity["barcode"] as! String
+                    let rank = commodity["rank"] as! Int
+                    let imageData: PFFile = commodity["pImage"] as! PFFile
+                    imageData.getDataInBackgroundWithBlock({(image, error) -> Void in
+                        if (error == nil) {
+                            UIGraphicsBeginImageContext(self.size)
+                            let photo = UIImage(data: image!)
+                            photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+                            let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+                            UIGraphicsEndImageContext()
+                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode, rank: rank)
+                            self.rankCommodity.append(com)
+                        }
+                        callBack(self.rankCommodity)
+                    })
+                }
+            }
+        }
+    }
+
+    func serchView(callBack:  Array<Commodity> -> Void) -> Void{
+        let query = PFQuery(className: "P_Table")
+        query.orderByDescending("Viewrank")
+        query.limit = 10
+        query.findObjectsInBackgroundWithBlock {(commoditys, error) -> Void in
+            if error == nil {
+                self.rankCommodity = []
+                for commodity in commoditys!{
+                    let name = commodity["pName"] as! String
+                    let day = commodity["day"] as! NSDate
+                    let price = commodity["price"] as! Int
+                    let maker = commodity["maker"] as! String
+                    let calorie = commodity["calorie"] as! Int
+                    let barcode = commodity["barcode"] as! String
+                    let rank = commodity["Viewrank"] as! Int
+                    let imageData: PFFile = commodity["pImage"] as! PFFile
+                    imageData.getDataInBackgroundWithBlock({(image, error) -> Void in
+                        if (error == nil) {
+                            UIGraphicsBeginImageContext(self.size)
+                            let photo = UIImage(data: image!)
+                            photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+                            let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+                            UIGraphicsEndImageContext()
+                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode, rank: rank)
+                            self.rankCommodity.append(com)
+                        }
+                        callBack(self.rankCommodity)
+                    })
+                }
+            }
+        }
+    }
+
     
 }
