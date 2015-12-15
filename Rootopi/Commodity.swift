@@ -20,7 +20,8 @@ class Commodity {
     var day: NSDate!
     var barcode: String!
     var rank: Int!
-    init(name: String, price: Int, calorie: Int, maker: String, photo: UIImage, release: NSDate, barcode: String){
+    var tweetImage : UIImage!
+    init(name: String, price: Int, calorie: Int, maker: String, photo: UIImage, release: NSDate, barcode: String, tweetImage: UIImage){
         self.cName = name
         self.price = price
         self.calorie = calorie
@@ -28,6 +29,7 @@ class Commodity {
         self.day = release
         self.photo = photo
         self.barcode = barcode
+        self.tweetImage = tweetImage
     }
     
     init(name: String, price: Int, calorie: Int, maker: String, photo: UIImage, release: NSDate, barcode: String, rank: Int){
@@ -39,5 +41,9 @@ class Commodity {
         self.photo = photo
         self.barcode = barcode
         self.rank = rank
+    }
+    
+    init(photo: UIImage){
+        self.photo = photo
     }
 }

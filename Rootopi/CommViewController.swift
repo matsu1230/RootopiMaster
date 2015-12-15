@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Social
 
 class CommViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
     
@@ -27,6 +28,8 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var commScrollView: UIScrollView!
     
     
+    var myComposeView : SLComposeViewController!
+    var tweetImage: UIImage?
     let view1 = UIView()
     let refreshControl = UIRefreshControl()
     let contentView = UIView()
@@ -223,6 +226,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let com = CommodityManager.sheradInstance.commoditys[i]
         print(com.cName)
         commImageView.image = com.photo
+        self.tweetImage = com.photo
         cName.text = com.cName
         cPrice.text = "\(com.price)円"
         cKcal.text = "\(com.calorie)Kcal"
@@ -307,5 +311,19 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func keyBoardTap(){
         commentTextField.inputView = nil
         commentTextField.reloadInputViews()
+    }
+    @IBAction func tweetButton(sender: UIButton) {
+        // SLComposeViewControllerのインスタンス化.
+        // ServiceTypeをTwitterに指定.
+        myComposeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        
+        // 投稿するテキストを指定.
+        myComposeView.setInitialText("てすと")
+        let i = Int(id!)
+        // 投稿する画像を指定.
+        myComposeView.addImage(CommodityManager.sheradInstance.commoditys[i].tweetImage)
+        
+        // myComposeViewの画面遷移.
+        self.presentViewController(myComposeView, animated: true, completion: nil)
     }
 }

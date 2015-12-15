@@ -15,6 +15,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     var myLocationManager:CLLocationManager!
     var here: (lat: Double, lon: Double)? = nil
     var yls: YahooLocalSearch = YahooLocalSearch()
+    let commodity = CommodityManager.sheradInstance
     
     @IBOutlet weak var myMap: MKMapView!
     
@@ -25,6 +26,8 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     
     let manager = MapManeger()
     var buttonCounnt = 0
+    var selectedRow : Int?
+    var id : Int?
 
     var array: Array<Maps> = []
     override func viewDidLoad() {
@@ -96,8 +99,6 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
                 self.myMap.setRegion(myRegion, animated: true)
                 self.myMap.addAnnotation(myPin)
             }
-            //self.myButton.tag = self.buttonCounnt + 1
-            //self.buttonCounnt += 1
         })
     }
     
@@ -118,8 +119,6 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
             myAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: myAnnotationIdentifier as String)
             
             // アノテーションに画像を追加.
-            //print(myAnnotationView.annotation?)
-            //myAnnotationView.annotation.
             let myButton = UIButton(frame: CGRectMake(0,0,50,50))
             
             myAnnotationView.tag = buttonCounnt
@@ -141,30 +140,26 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     func locationManager(manager: CLLocationManager,didFailWithError error: NSError){
         print("error", terminator: "")
         
-        let myLat: CLLocationDegrees = 37.506804
+        let myLatDist : CLLocationDistance = 1000
         
-        let myLon: CLLocationDegrees = 139.930531
-        
-        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon)
-        
-        let myLatDist : CLLocationDistance = 100
-        
-        let myLonDist : CLLocationDistance = 100
-        
-        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
-        let myPin: MKPointAnnotation = MKPointAnnotation()
-        
-        
-        let myCircle: MKCircle = MKCircle(centerCoordinate: myCoordinate, radius: CLLocationDistance(5))
-        myMap.addOverlay(myCircle)
-        
-        myPin.coordinate = myCoordinate
-        myPin.title = "aaaaa"
-        yls.condition.lon = 37.506804
-        yls.condition.lon = 139.930531
-        myMap.setRegion(myRegion, animated: true)
-        myMap.addAnnotation(myPin)
-        
+        let myLonDist : CLLocationDistance = 1000
+        yls.condition.lon = 139.5278631193
+        yls.condition.lat = 35.614369808364
+        yls.loadData(true)
+        let loadDataObserver = NSNotificationCenter.defaultCenter().addObserverForName(yls.YLSLoadCompleteNotification, object: nil, queue: nil, usingBlock: { (notification) in
+            for var i = 0; i < self.yls.total; i++ {
+                let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.shops[i].lat!, self.yls.shops[i].lon!)
+                let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist)
+                let myPin: MKPointAnnotation = MKPointAnnotation()
+                let myCircle: MKCircle = MKCircle(centerCoordinate: myCoordinate, radius: CLLocationDistance(50))
+                self.myMap.addOverlay(myCircle)
+                myPin.coordinate = myCoordinate
+                myPin.title = self.yls.shops[i].name!
+                self.myMap.setRegion(myRegion, animated: true)
+                self.myMap.addAnnotation(myPin)
+            }
+
+        })
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
@@ -247,6 +242,24 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
 
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedRow = indexPath.row
+        for var i = 0; i < commodity.commoditys.count; i++ {
+            if (self.array[self.selectedRow!].pName == commodity.commoditys[i].cName) {
+                self.id = i
+            }
+        }
+        performSegueWithIdentifier("fromMap", sender: nil)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromMap" {
+            myWindow.hidden = true
+            let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            comVC.id = self.id
+        }
+    }
     
     @IBAction func mapLocationRefresh(sender: AnyObject) {
         myLocationManager.startUpdatingLocation()

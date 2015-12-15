@@ -13,6 +13,7 @@ import Parse
 class CommodityManager {
     
     var commoditys: Array<Commodity> = []
+    var tweetImages : Array<Commodity> = []
     var rankCommodity : Array<Commodity> = []
     var barcodeSerch: Array<Barcode> = []
     static let sheradInstance = CommodityManager()
@@ -36,10 +37,12 @@ class CommodityManager {
                         if (error == nil) {
                             UIGraphicsBeginImageContext(self.size)
                             let photo = UIImage(data: image!)
+                            let tweetImage = Commodity(photo: photo!)
+                            self.tweetImages.append(tweetImage)
                             photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
                             let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
                             UIGraphicsEndImageContext()
-                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode)
+                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode, tweetImage: photo!)
                             self.commoditys.append(com)
                             callBack()
                         }
@@ -100,7 +103,7 @@ class CommodityManager {
                             photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
                             let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
                             UIGraphicsEndImageContext()
-                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode)
+                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode, tweetImage: photo!)
                             callBack(com)
                         }
                     })
@@ -131,7 +134,7 @@ class CommodityManager {
                             photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
                             let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
                             UIGraphicsEndImageContext()
-                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode)
+                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode, tweetImage: photo!)
                             callBack(com)
                         }
                     })
@@ -162,7 +165,7 @@ class CommodityManager {
                             photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
                             let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
                             UIGraphicsEndImageContext()
-                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode)
+                            let com = Commodity(name: name, price: price, calorie: calorie, maker: maker, photo: resizeImage!, release: day, barcode: barcode, tweetImage: photo!)
                             callBack(com)
                         }
                     })

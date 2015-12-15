@@ -9,71 +9,104 @@
 import UIKit
 
 class RankViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
+    
     @IBOutlet weak var rankSegment: UISegmentedControl!
     @IBOutlet weak var rankTable: UITableView!
     
+    let commodity = CommodityManager.sheradInstance
     let manager = CommodityManager()
     var rankArray : Array<Commodity> = []
-    
+    var rankingArray : [Int] = []
+    var segmentId = 0
+    var rank = 1
+    var rankCount: Int!
+    var count = 0
+    var id : Int!
+    var selectedRow : Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         rankTable.registerNib(UINib(nibName: "RankTableViewCell", bundle: nil), forCellReuseIdentifier: "RankTableViewCell")
         self.rankTable.delegate = self
         self.rankTable.dataSource = self
         rankSegment.addTarget(self, action: "segconChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        
-        manager.serchRanl((callBack: { ranks in
-            print(ranks)
-            self.rankArray = ranks
-            self.rankArray.sortInPlace { (a, b) -> Bool in
-                return a.rank > b.rank
-            }
-            self.rankTable.reloadData()
-    
-            }
-        ))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if segmentId == 0 {
+        manager.serchRanl((callBack: { ranks in
+            self.rankArray = ranks
+            if self.rankArray.count == 10 {
+                self.sortRank()
+                self.rank = 1
+            }
+            }
+        ))
+        } else {
+            self.rankingArray.removeAll()
+            manager.serchView((callBack: { ranks in
+                self.rankArray = ranks
+                if self.rankArray.count == 10 {
+                    self.sortRank()
+                    self.rank = 1
+                }
+                }
+            ))
+        }
     }
     
     func segconChanged(segcon: UISegmentedControl){
         self.rankArray.removeAll()
         switch segcon.selectedSegmentIndex {
         case 0:
-
+            self.rankingArray.removeAll()
             print("お気に入り")
             manager.serchRanl((callBack: { ranks in
-                print(ranks)
+                //print(ranks)
                 self.rankArray = ranks
-                self.rankArray.sortInPlace { (a, b) -> Bool in
-                    return a.rank > b.rank
+                if self.rankArray.count == 10 {
+                    self.sortRank()
+                    self.rank = 1
                 }
-                self.rankTable.reloadData()
-
                 }
             ))
+            segmentId = 0
         case 1:
-
-            print("閲覧数")
+            self.rankingArray.removeAll()
             manager.serchView((callBack: { ranks in
-                print(ranks)
                 self.rankArray = ranks
-                self.rankArray.sortInPlace { (a, b) -> Bool in
-                    return a.rank > b.rank
+                if self.rankArray.count == 10 {
+                    self.sortRank()
+                    self.rank = 1
                 }
-                self.rankTable.reloadData()
-                
                 }
             ))
+            segmentId = 1
         default:
             print("Error")
         }
     }
     
+    func sortRank(){
+        self.rankArray.sortInPlace { (a, b) -> Bool in
+            return a.rank > b.rank
+        }
+
+        for var i = 0; i < self.rankArray.count; i++ {
+                    print(self.rankArray[i].rank)
+            for var j = 0; j < self.rankArray.count; j++ {
+            if self.rankArray[i].rank < self.rankArray[j].rank{
+                rank += 1
+                }
+            }
+            self.rankingArray.append(rank)
+            rank = 1
+        }
+        self.rankTable.reloadData()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.rankArray.count
@@ -90,19 +123,29 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RankTableViewCell", forIndexPath: indexPath) as! RankTableViewCell
         cell.rankCount.text = "\(rankArray[indexPath.row].rank)"
+        cell.rankNumber.text = "\(rankingArray[indexPath.row])"
         cell.rankImage.image = rankArray[indexPath.row].photo
         cell.rankName.text = rankArray[indexPath.row].cName
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedRow = indexPath.row
+        for var i = 0; i < commodity.commoditys.count; i++ {
+            if (rankArray[self.selectedRow!].cName == commodity.commoditys[i].cName) {
+                self.id = i
+            }
+        }
+        performSegueWithIdentifier("fromRank", sender: nil)
+        
     }
-    */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fromRank" {
+            let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            comVC.id = self.id
+        }
+    }
 
+    
 }
