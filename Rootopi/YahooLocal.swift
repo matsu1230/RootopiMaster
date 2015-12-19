@@ -58,11 +58,9 @@ public struct QueryCondition {
     // 店舗ID
     public var gid: String? = nil
     // ソート順
-    public enum Sort: String {
-        case Hybrid = "hybrid"
-        case Geo = "geo"
-    }
-    public var sort: Sort = .Hybrid
+    public var sort: String? = "score"
+    
+    //public var sort: Sort = .Hybrid
     // 緯度
     public var lat: Double? = nil
     // 経度
@@ -82,12 +80,7 @@ public struct QueryCondition {
                 params["gid"] = unwrapped
             }
             // ソート順
-            switch sort {
-            case .Hybrid:
-                params["sort"] = "hybrid"
-            case .Geo:
-                params["sort"] = "geo"
-            }
+                params["sort"] = sort
             // 緯度
             if let unwrapped = lat {
                 params["lat"] = "\(unwrapped)"
@@ -154,6 +147,8 @@ public class YahooLocalSearch {
         if reset {
             shops = []
             total = 0
+        }else if reset == false {
+            return
         }
         
         // API実行中フラグをON

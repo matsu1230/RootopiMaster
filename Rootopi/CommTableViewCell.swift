@@ -16,7 +16,7 @@ class CommTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         cNameLabel.numberOfLines = 0
-        pImageView.layer.cornerRadius = 50
+        pImageView.layer.cornerRadius = 40
         pImageView.layer.masksToBounds = true
         // Initialization code
     }

@@ -27,7 +27,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var stampImage: UIImageView!
     @IBOutlet weak var commScrollView: UIScrollView!
     @IBOutlet weak var tweetButton: UIButton!
-    
+    @IBOutlet weak var commentCount: UILabel!
     
     var myComposeView : SLComposeViewController!
     var tweetImage: UIImage?
@@ -63,7 +63,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
         self.navigationItem.titleView = titleImageView
-        
+        self.commentTextField.delegate  = self
         UIGraphicsBeginImageContext(self.size)
         let photo = UIImage(named: "twitter")
         photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
@@ -141,6 +141,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         manager.fechComment(cName.text!, callBack: { comments in
             self.commentArry.append(comments)
             self.commentTable.reloadData()
+            self.commentCount.text = "コメント(\(self.commentArry.count))件"
             height = CGFloat(self.commentArry.count * 80)
             print(height)
             print(self.commScrollView.contentSize.height)
@@ -261,6 +262,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             let pname = CommodityManager.sheradInstance.commoditys[i].cName
             let comment = Comment(comment: content!, pname: pname, stamp: self.stampIndex!)
+            //textField(self.commentTextField, shouldChangeCharactersInRange: nil, replacementString: nil)
             comment.save()
             self.commentArry.removeAll()
             manager.fechComment(cName.text!, callBack: { comments in
@@ -271,6 +273,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print(cName.text!)
             print("save", terminator: "")
             commentTextField.text = ""
+            self.stampIndex = 0
             stampImage.image = nil
         }
     }
@@ -335,7 +338,22 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.presentViewController(myComposeView, animated: true, completion: nil)
     }
     
-    
+    //テキスト制限
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        // 文字数最大を決める.
+        let maxLength: Int = 20
+        
+        // 入力済みの文字と入力された文字を合わせて取得.
+        var tmpStr  = self.commentTextField.text! as NSString
+        tmpStr = tmpStr.stringByReplacingCharactersInRange(range, withString: string)
+        if tmpStr.length < maxLength {
+            return true
+        }
+        print("文字を超えています")
+        return false
+    }
+
     //戻るイベント
     override func viewWillDisappear(animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {

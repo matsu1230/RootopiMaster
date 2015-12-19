@@ -33,6 +33,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     private var descriptionTextLabel2: UILabel = UILabel()
     private var descriptionImageView2: UIImageView = UIImageView()
 
+
     let myTable: UITableView = UITableView()
     
     let manager = MapManeger()
@@ -42,30 +43,41 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     var loadFlag = 0
     var annotationFlag = false
     var array: Array<Maps> = []
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.yls.shops.removeAll()
+        //self.yls.shops.removeAll()
         self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
         navigationItem.titleView = titleImageView
 
-
+        myMap.delegate = self
+        self.buttonCounnt = 0
+        self.loadFlag = 0
+        /*myMap.removeAnnotations(myMap.annotations)
+        //print(myMap.annotations)
+        self.buttonCounnt = 0
+        if self.myMap.annotations.count > 0 {
+            myMap.delegate = nil
+            loadView()
+        }*/
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         // 現在地を取得します
-        
-        myMap.delegate = self
-        print(self.myMap.annotations.count)
-        /*if self.myMap.annotations.count > 0 {
-            self.myMap.removeAnnotations(self.myMap.annotations)
-            
-        }else {
+        //myMap.removeAnnotations(myMap.annotations)
+        self.buttonCounnt = 0
+        //print(yls.shops)
+        //self.yls.shops.removeAll()
+        print(self.myMap.annotations)
+        print(self.buttonCounnt)
+
+        /*else {
             myMap.delegate = self
         }*/
         //loadFlag = 0
-        //buttonCounnt = 0
         descriptionWindow = UIWindow()
         myWindow = UIWindow()
         myWindowButton = UIButton()
@@ -90,7 +102,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         textView.frame = CGRectMake(30, 0, view.frame.width, 20)
         textView.text = "この店舗に売っている商品一覧"
         myWindow.layer.position = CGPointMake(self.view.frame.width/2, 250)
-        myWindow.alpha = 0.8
+        myWindow.alpha = 1
         myWindow.layer.cornerRadius = 20
         
         
@@ -112,14 +124,14 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         descriptionView.layer.cornerRadius = 20
 
         
-        descriptionImageView1.frame = CGRectMake(0, 30, 30, 30)
+        descriptionImageView1.frame = CGRectMake(10, 30, 30, 30)
         descriptionImageView1.image = UIImage(named: "blueRadius_29x29")
-        descriptionTextLabel1.frame = CGRectMake(30, 30, self.view.frame.width - 30, 30)
+        descriptionTextLabel1.frame = CGRectMake(40, 30, self.view.frame.width - 40, 30)
         descriptionTextLabel1.text = "をタップすると店舗の名前が見られます。"
             
-        descriptionImageView2.frame = CGRectMake(0, 70, 30, 30)
+        descriptionImageView2.frame = CGRectMake(10, 70, 30, 30)
         descriptionImageView2.image = UIImage(named: "mapIcon_29x29")
-        descriptionTextLabel2.frame = CGRectMake(30, 70, self.view.frame.width - 30, 50)
+        descriptionTextLabel2.frame = CGRectMake(40, 70, self.view.frame.width - 40, 50)
         descriptionTextLabel2.numberOfLines = 2
         descriptionTextLabel2.text = "をタップすると\n売っている商品の一覧が見られます。"
         
@@ -155,12 +167,13 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.yls.condition.lat = manager.location!.coordinate.latitude
         self.yls.condition.lon =  manager.location!.coordinate.longitude
+        //self.myMap.setCenterCoordinate(self.myMap.userLocation.coordinate, animated: true)
         let myLatDist : CLLocationDistance = 1000
         let myLonDist : CLLocationDistance = 1000
         manager.stopUpdatingLocation()
-        self.yls.shops.removeAll()
-        yls.loadData(true)
+        //self.yls.shops.removeAll()
         myLocationManager.stopUpdatingLocation()
+        yls.loadData(true)
         if loadFlag == 0 {
         let loadDataObserver = NSNotificationCenter.defaultCenter().addObserverForName(yls.YLSLoadCompleteNotification, object: nil, queue: nil, usingBlock: { (notification) in
             for var i = 0; i < self.yls.total; i++ {
@@ -168,8 +181,6 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
                 let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.shops[i].lat!, self.yls.shops[i].lon!)
                 let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLoacate, myLatDist, myLonDist)
                 let myPin: MKPointAnnotation = MKPointAnnotation()
-                let myCircle: MKCircle = MKCircle(centerCoordinate: myCoordinate, radius: CLLocationDistance(20))
-                self.myMap.addOverlay(myCircle)
                 myPin.coordinate = myCoordinate
                 if self.yls.shops[i].name?.utf16.count > 13 {
                     let shopName = self.yls.shops[i].name! as NSString
@@ -180,61 +191,59 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
                 }
                 self.myMap.setRegion(myRegion, animated: true)
                 self.myMap.addAnnotation(myPin)
+                //self.buttonCounnt += 1
             }
+            //self.buttonCounnt += 1
+            self.loadFlag = 1
         })
-            loadFlag = 1
         }else {
-            self.myMap.removeAnnotations(self.myMap.annotations)
-            //self.yls.shops.removeAll()
-            loadFlag = 1
-            buttonCounnt = 0
+            //yls.loadData(true)
+            loadFlag = 0
+            self.buttonCounnt = 0
         }
         let userLoacate : CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.condition.lat!,  self.yls.condition.lon!)
+        let myCircle: MKCircle = MKCircle(centerCoordinate: userLoacate, radius: CLLocationDistance(20))
+        self.myMap.addOverlay(myCircle)
         let userPin  = MKPointAnnotation()
-        let userCircle: MKCircle = MKCircle(centerCoordinate: userLoacate, radius: CLLocationDistance(20))
-        //self.myMap.addOverlay(userCircle)
         userPin.coordinate = userLoacate
         userPin.title = "現在地"
         self.myMap.addAnnotation(userPin)
     }
-    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         // Identifier生成.
         let myAnnotationIdentifier: NSString = "myAnnotation"
         myTable.delegate = self
         myTable.dataSource = self
-
-        print(annotation.title)
+        //print(annotation.title)
         // アノテーション生成.
         var myAnnotationView: MKAnnotationView!
-        
         if annotation.title! != "現在地" {
-        // もしアノテーションがまだインスタンス化されていなかったらインスタンスを生成する.
-        if myAnnotationView == nil {
+            // もしアノテーションがまだインスタンス化されていなかったらインスタンスを生成する.
+            if myAnnotationView == nil {
+                myAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: myAnnotationIdentifier as String)
+                
+                // アノテーションに画像を追加.
+                let myButton = UIButton(frame: CGRectMake(0,0,50,50))
+                //myButton.tag = 0
+                myAnnotationView.tag = self.buttonCounnt
+                myButton.setBackgroundImage(UIImage(named: "buttonLogo"), forState: .Normal)
+                print(myButton.tag)
+                print(self.buttonCounnt)
+                myButton.tag = self.buttonCounnt
+                myButton.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchDown)
+                myAnnotationView.leftCalloutAccessoryView = myButton
+                myAnnotationView.image =  UIImage(named: "crrent")
+                // アノテーションのコールアウトを許可.
+                myAnnotationView.canShowCallout = true
+            }
             
-            myAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: myAnnotationIdentifier as String)
-            
-            // アノテーションに画像を追加.
-            let myButton = UIButton(frame: CGRectMake(0,0,50,50))
-            
-            myAnnotationView.tag = buttonCounnt
-            myButton.setBackgroundImage(UIImage(named: "buttonLogo"), forState: .Normal)
-            //myButton.backgroundColor = UIColor.brownColor()
-            myButton.tag = buttonCounnt
-            myButton.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchDown)
-            myAnnotationView.leftCalloutAccessoryView = myButton
-            
-            // アノテーションのコールアウトを許可.
-            myAnnotationView.canShowCallout = true
-        }
-        
-        self.buttonCounnt += 1
-        return myAnnotationView
+            self.buttonCounnt += 1
+            return myAnnotationView
         }else {
             let mydentifier: NSString = "carennt"
             let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: mydentifier as String)
-            annotationView.image =  UIImage(named: "crrent")
+            //annotationView.image =  UIImage(named: "crrent")
             annotationView.canShowCallout = true
             return annotationView
         }
@@ -244,47 +253,47 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
     // 位置情報取得失敗時に呼ばれます
     func locationManager(manager: CLLocationManager,didFailWithError error: NSError){
         print("error", terminator: "")
-        
+        self.myMap.setCenterCoordinate(self.myMap.userLocation.coordinate, animated: true)
         let myLatDist : CLLocationDistance = 1000
-        
         let myLonDist : CLLocationDistance = 1000
         yls.condition.lon = 139.5278631193
         yls.condition.lat = 35.614369808364
-        yls.loadData(true)
         manager.stopUpdatingLocation()
         myLocationManager.stopUpdatingLocation()
+        //print(self.myMap.annotations)
+        //print(self.buttonCounnt)
+        yls.loadData(true)
         if loadFlag == 0 {
-        let loadDataObserver = NSNotificationCenter.defaultCenter().addObserverForName(yls.YLSLoadCompleteNotification, object: nil, queue: nil, usingBlock: { (notification) in
-            //self.buttonCounnt = 0
-            for var i = 0; i < self.yls.total; i++ {
-                let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.shops[i].lat!, self.yls.shops[i].lon!)
-                let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist)
-                let myPin: MKPointAnnotation = MKPointAnnotation()
-                let myCircle: MKCircle = MKCircle(centerCoordinate: myCoordinate, radius: CLLocationDistance(30))
-                self.myMap.addOverlay(myCircle)
-                myPin.coordinate = myCoordinate
-                if self.yls.shops[i].name?.utf16.count > 13 {
-                    let shopName = self.yls.shops[i].name! as NSString
-                    myPin.title = shopName.substringToIndex(13)
-                    myPin.subtitle = shopName.substringFromIndex(13)
-                }else {
-                    myPin.title = self.yls.shops[i].name!
+            let loadDataObserver = NSNotificationCenter.defaultCenter().addObserverForName(yls.YLSLoadCompleteNotification, object: nil, queue: nil, usingBlock: { (notification) in
+                for var i = 0; i < self.yls.total; i++ {
+                    let userLoacate : CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.condition.lat!,  self.yls.condition.lon!)
+                    let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.shops[i].lat!, self.yls.shops[i].lon!)
+                    let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLoacate, myLatDist, myLonDist)
+                    let myPin: MKPointAnnotation = MKPointAnnotation()
+                    myPin.coordinate = myCoordinate
+                    if self.yls.shops[i].name?.utf16.count > 13 {
+                        let shopName = self.yls.shops[i].name! as NSString
+                        myPin.title = shopName.substringToIndex(13)
+                        myPin.subtitle = shopName.substringFromIndex(13)
+                    }else {
+                        myPin.title = self.yls.shops[i].name!
+                    }
+                    self.myMap.setRegion(myRegion, animated: true)
+                    self.myMap.addAnnotation(myPin)
+                    //self.buttonCounnt += 1
                 }
-                self.myMap.setRegion(myRegion, animated: true)
-                self.myMap.addAnnotation(myPin)
-            }
-        })
-            loadFlag = 1
-            //self.annotationFlag = true
-        } else {
-            //self.myMap.removeAnnotations(self.myMap.annotations)
-            loadFlag = 1
-            buttonCounnt = 0
+                //self.buttonCounnt += 1
+                self.loadFlag = 1
+            })
+        }else {
+            //yls.loadData(true)
+            loadFlag = 0
+            self.buttonCounnt = 0
         }
         let userLoacate : CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.yls.condition.lat!,  self.yls.condition.lon!)
+        let myCircle: MKCircle = MKCircle(centerCoordinate: userLoacate, radius: CLLocationDistance(20))
+        self.myMap.addOverlay(myCircle)
         let userPin  = MKPointAnnotation()
-        let userCircle: MKCircle = MKCircle(centerCoordinate: userLoacate, radius: CLLocationDistance(20))
-        //self.myMap.addOverlay(userCircle)
         userPin.coordinate = userLoacate
         userPin.title = "現在地"
         self.myMap.addAnnotation(userPin)
@@ -295,7 +304,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         // rendererを生成.
         let myCircleView: MKCircleRenderer = MKCircleRenderer(overlay: overlay)
         
-        print(overlay.title)
+        //print(overlay.title)
         // 円の内部を青色で塗りつぶす.
         myCircleView.fillColor = UIColor.blueColor()
         
@@ -322,7 +331,7 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         
         // windowを表示する.
         self.myWindow.makeKeyAndVisible()
-        print(yls.shops[tag].name!)
+        //print(yls.shops[tag].name!)
         
             manager.fechComment(yls.shops[tag].name!, callBack: { maps in
                 self.array.append(maps)
@@ -359,7 +368,9 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
             descriptionFlag = false
             descriptionView.addSubview(descriptionButton)
             descriptionView.addSubview(descriptionTextLabel1)
+            descriptionView.addSubview(descriptionImageView1)
             descriptionView.addSubview(descriptionTextLabel2)
+            descriptionView.addSubview(descriptionImageView2)
 
         }
     }
@@ -415,4 +426,9 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         myLocationManager.startUpdatingLocation()
     }
     
+   /* deinit {
+        self.myMap.removeAnnotations(self.myMap.annotations)
+        self.buttonCounnt = 0
+        print(self.buttonCounnt)
+    }*/
 }

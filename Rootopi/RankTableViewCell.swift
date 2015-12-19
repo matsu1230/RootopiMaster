@@ -18,7 +18,7 @@ class RankTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         //cNameLabel.numberOfLines = 0
-        rankImage.layer.cornerRadius = 10
+        rankImage.layer.cornerRadius = 40
         rankImage.layer.masksToBounds = true
         // Initialization code
     }

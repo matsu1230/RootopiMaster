@@ -15,16 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="355" height="107"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1NZ-JK-6MO">
-                        <rect key="frame" x="8" y="16" width="94" height="84"/>
-                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="94" id="SDB-LZ-xfb"/>
-                            <constraint firstAttribute="height" constant="84" id="c4H-bC-OoW"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utI-jR-PAx">
-                        <rect key="frame" x="110" y="16" width="237" height="83"/>
+                        <rect key="frame" x="106" y="11" width="237" height="83"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="83" id="CiI-6N-RGY"/>
                             <constraint firstAttribute="width" constant="237" id="alw-2g-dcZ"/>
@@ -33,14 +25,22 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1NZ-JK-6MO">
+                        <rect key="frame" x="0.0" y="8" width="90" height="90"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="SDB-LZ-xfb"/>
+                            <constraint firstAttribute="height" constant="90" id="c4H-bC-OoW"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="utI-jR-PAx" secondAttribute="trailing" id="8Au-ac-S0r"/>
-                    <constraint firstItem="utI-jR-PAx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="GdN-Uv-UOr"/>
-                    <constraint firstItem="utI-jR-PAx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="4" id="bCs-co-1Zw"/>
-                    <constraint firstItem="utI-jR-PAx" firstAttribute="leading" secondItem="1NZ-JK-6MO" secondAttribute="trailing" constant="8" id="bIY-Qg-gss"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="utI-jR-PAx" secondAttribute="bottom" id="bp5-aw-dqP"/>
-                    <constraint firstItem="1NZ-JK-6MO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="lgm-ut-Mua"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="utI-jR-PAx" secondAttribute="trailing" constant="4" id="8Au-ac-S0r"/>
+                    <constraint firstItem="utI-jR-PAx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="GdN-Uv-UOr"/>
+                    <constraint firstItem="utI-jR-PAx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-1" id="bCs-co-1Zw"/>
+                    <constraint firstItem="utI-jR-PAx" firstAttribute="leading" secondItem="1NZ-JK-6MO" secondAttribute="trailing" constant="16" id="bIY-Qg-gss"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="utI-jR-PAx" secondAttribute="bottom" constant="5" id="bp5-aw-dqP"/>
+                    <constraint firstItem="1NZ-JK-6MO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="lgm-ut-Mua"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

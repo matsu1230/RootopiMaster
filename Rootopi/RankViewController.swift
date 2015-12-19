@@ -26,6 +26,8 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedRow : Int!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        navigationItem.titleView = titleImageView
         rankTable.registerNib(UINib(nibName: "RankTableViewCell", bundle: nil), forCellReuseIdentifier: "RankTableViewCell")
         self.rankTable.delegate = self
         self.rankTable.dataSource = self
@@ -120,7 +122,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70
+        return 100
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

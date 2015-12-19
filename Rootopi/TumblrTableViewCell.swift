@@ -15,7 +15,7 @@ class TumblrTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         tumblrLabel.numberOfLines = 0
-        tumblrImage.layer.cornerRadius = 50
+        tumblrImage.layer.cornerRadius = 40
         tumblrImage.layer.masksToBounds = true
         // Initialization code
     }
