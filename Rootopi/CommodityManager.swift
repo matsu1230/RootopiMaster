@@ -21,6 +21,7 @@ class CommodityManager {
     
     func fetcCommodity(callBack: () -> Void){
         let query = PFQuery(className: "P_Table")
+        //query.limit = 10
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock {(commoditys, error) -> Void in
             if error == nil {

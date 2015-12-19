@@ -26,6 +26,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var cName: UILabel!
     @IBOutlet weak var stampImage: UIImageView!
     @IBOutlet weak var commScrollView: UIScrollView!
+    @IBOutlet weak var tweetButton: UIButton!
     
     
     var myComposeView : SLComposeViewController!
@@ -62,6 +63,13 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
         self.navigationItem.titleView = titleImageView
+        
+        UIGraphicsBeginImageContext(self.size)
+        let photo = UIImage(named: "twitter")
+        photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+        let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        tweetButton.setBackgroundImage(resizeImage, forState: .Normal)
         print(self.id)
         commentTable.registerNib(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
         //キーボーど用
@@ -226,7 +234,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let com = CommodityManager.sheradInstance.commoditys[i]
         print(com.cName)
         commImageView.image = com.photo
-        self.tweetImage = com.photo
+        //self.tweetImage = com.photo
         cName.text = com.cName
         cPrice.text = "\(com.price)円"
         cKcal.text = "\(com.calorie)Kcal"
@@ -325,5 +333,32 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // myComposeViewの画面遷移.
         self.presentViewController(myComposeView, animated: true, completion: nil)
+    }
+    
+    
+    //戻るイベント
+    override func viewWillDisappear(animated: Bool) {
+        if let viewControllers = self.navigationController?.viewControllers {
+            var existsSelfInViewControllers = true
+            for viewController in viewControllers {
+                // viewWillDisappearが呼ばれる時に、
+                // 戻る処理を行っていれば、NavigationControllerのviewControllersの中にselfは存在していない
+                if viewController == self {
+                    existsSelfInViewControllers = false
+                    // selfが存在した時点で処理を終える
+                    break
+                }
+            }
+            
+            if existsSelfInViewControllers {
+                print("前の画面に戻る処理が行われました")
+                let subViews = self.view.subviews
+                for subView in subViews {
+                    subView.removeFromSuperview()
+                }
+                self.commentArry.removeAll()
+            }
+        }
+        super.viewWillDisappear(animated)
     }
 }

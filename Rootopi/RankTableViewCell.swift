@@ -14,6 +14,7 @@ class RankTableViewCell: UITableViewCell {
     @IBOutlet weak var rankImage: UIImageView!
     @IBOutlet weak var rankName: UILabel!
     @IBOutlet weak var rankCount: UILabel!
+    @IBOutlet weak var rankSegumentImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         //cNameLabel.numberOfLines = 0

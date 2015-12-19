@@ -11,7 +11,7 @@ import UIKit
 
 class TumblrTableViewController: UITableViewController {
     
-    let size = CGSize(width: 100, height: 100)
+    let size = CGSize(width: 50, height: 50)
     var selectedRow: Int?
     
     override func viewDidLoad() {
@@ -50,18 +50,11 @@ class TumblrTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TumblrTableViewCell", forIndexPath: indexPath) as! TumblrTableViewCell
-        let photoUrl = NSURL(string: DownloadsViewController.tumblrPhotos[indexPath.row] as! String)
-        if photoUrl != nil {
-            let req = NSURLRequest(URL:photoUrl!)
-            NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
-                UIGraphicsBeginImageContext(self.size)
-                let photo = UIImage(data: data!)
-                photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
-                let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                cell.tumblrImage.image = resizeImage
+        let photo = DownloadsViewController.tumblrPhotos
+        if photo.count > 0{
+            //let req = NSURLRequest(URL:photoUrl!)
+                cell.tumblrImage.image = photo[indexPath.row]
                 cell.tumblrLabel.text = DownloadsViewController.tumblrTitle[indexPath.row] as? String
-            }
         }else {
             UIGraphicsBeginImageContext(self.size)
             let tumblrImage = UIImage(named: "star-on")
@@ -96,6 +89,7 @@ class TumblrTableViewController: UITableViewController {
             //print(comMa.pName!)
         }
     }
+    
     
     
     /*

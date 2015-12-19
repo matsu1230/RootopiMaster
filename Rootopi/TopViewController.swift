@@ -29,10 +29,11 @@ class TopViewController: UIViewController {
         //self.navigationController = HomeNavigationViewController
         self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         self.navigationItem.titleView = titleImageView
+        
         let callback = { () -> Void in
             self.viewDidAppear(true)
             
-            if self.count == 2 {
+            if self.count == 2 && DownloadsViewController.tumblrPhotos.count > 0{
                 self.viewSet()
             }
             self.count += 1
@@ -56,23 +57,15 @@ class TopViewController: UIViewController {
         comButton1.setBackgroundImage(com[0].photo, forState: .Normal)
         comButton2.setBackgroundImage(com[1].photo, forState: .Normal)
         //let photoUrl = NSURL(string: tumblr as! String)
-        let urlStr : String = tumblr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-        let photoUrl = NSURL(string: urlStr )
+       // let urlStr : String = tumblr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        //let photoUrl = NSURL(string: urlStr )
         //print(photoUrl)
-        if photoUrl != nil {
-            let req = NSURLRequest(URL:photoUrl!)
-            NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
-                let tumblrImage = UIImage(data: data!)
-                print(tumblrImage)
                 self.tumblrTitle.text = title as? String
-                self.tumblrButton.setBackgroundImage(tumblrImage, forState: .Normal)
-            }
-        } else {
-            print("aaaaaa")
-            let tumblrImage = UIImage(named: "star-on")
+                self.tumblrButton.setBackgroundImage(tumblr , forState: .Normal)
+
+        /*let tumblrImage = UIImage(named: "star-on")
             self.tumblrTitle.text = title as? String
-            self.tumblrButton.setBackgroundImage(tumblrImage, forState: .Normal)
-        }
+            self.tumblrButton.setBackgroundImage(tumblrImage, forState: .Normal)*/
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

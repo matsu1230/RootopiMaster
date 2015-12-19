@@ -15,6 +15,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     let commodity = CommodityManager.sheradInstance
     let manager = CommodityManager()
+    var segmentImage = UIImage(named: "fav")
     var rankArray : Array<Commodity> = []
     var rankingArray : [Int] = []
     var segmentId = 0
@@ -46,7 +47,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         ))
         } else {
-            self.rankingArray.removeAll()
+            //self.rankingArray.removeAll()
             manager.serchView((callBack: { ranks in
                 self.rankArray = ranks
                 if self.rankArray.count == 10 {
@@ -59,11 +60,12 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func segconChanged(segcon: UISegmentedControl){
-        self.rankArray.removeAll()
+        //self.rankArray.removeAll()
         switch segcon.selectedSegmentIndex {
         case 0:
             self.rankingArray.removeAll()
             print("お気に入り")
+            self.segmentImage = UIImage(named: "fav")
             manager.serchRanl((callBack: { ranks in
                 //print(ranks)
                 self.rankArray = ranks
@@ -76,6 +78,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
             segmentId = 0
         case 1:
             self.rankingArray.removeAll()
+            self.segmentImage = UIImage(named: "eye")
             manager.serchView((callBack: { ranks in
                 self.rankArray = ranks
                 if self.rankArray.count == 10 {
@@ -123,6 +126,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RankTableViewCell", forIndexPath: indexPath) as! RankTableViewCell
         cell.rankCount.text = "\(rankArray[indexPath.row].rank)"
+        cell.rankSegumentImage.image = self.segmentImage
         cell.rankNumber.text = "\(rankingArray[indexPath.row])"
         cell.rankImage.image = rankArray[indexPath.row].photo
         cell.rankName.text = rankArray[indexPath.row].cName
@@ -131,9 +135,12 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedRow = indexPath.row
+        print(rankArray[self.selectedRow!].cName)
         for var i = 0; i < commodity.commoditys.count; i++ {
+            print(commodity.commoditys[i].cName)
             if (rankArray[self.selectedRow!].cName == commodity.commoditys[i].cName) {
                 self.id = i
+                print(self.id)
             }
         }
         performSegueWithIdentifier("fromRank", sender: nil)
@@ -143,6 +150,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fromRank" {
             let comVC : CommViewController = segue.destinationViewController as! CommViewController
+            print(self.id)
             comVC.id = self.id
         }
     }

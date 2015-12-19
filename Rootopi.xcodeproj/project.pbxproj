@@ -41,6 +41,7 @@
 		D36F31D01BE7666D00A40107 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F31CF1BE7666D00A40107 /* SelectViewController.swift */; };
 		D36F31D51BE7A86F00A40107 /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36F31D31BE7A86F00A40107 /* ShopTableViewCell.swift */; };
 		D36F31D61BE7A86F00A40107 /* ShopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D36F31D41BE7A86F00A40107 /* ShopTableViewCell.xib */; };
+		D371475D1C24CA3F00AD0CF9 /* LoadingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D371475C1C24CA3E00AD0CF9 /* LoadingProxy.swift */; };
 		D386B3C71BE8DD9D00BB89B6 /* MapSubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3C61BE8DD9D00BB89B6 /* MapSubmitViewController.swift */; };
 		D386B3C91BE8EADC00BB89B6 /* MapSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3C81BE8EADC00BB89B6 /* MapSave.swift */; };
 		D386B3CB1BE8F76900BB89B6 /* MapFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */; };
@@ -128,6 +129,7 @@
 		D36F31CF1BE7666D00A40107 /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		D36F31D31BE7A86F00A40107 /* ShopTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
 		D36F31D41BE7A86F00A40107 /* ShopTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopTableViewCell.xib; sourceTree = "<group>"; };
+		D371475C1C24CA3E00AD0CF9 /* LoadingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProxy.swift; sourceTree = "<group>"; };
 		D386B3C61BE8DD9D00BB89B6 /* MapSubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSubmitViewController.swift; sourceTree = "<group>"; };
 		D386B3C81BE8EADC00BB89B6 /* MapSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSave.swift; sourceTree = "<group>"; };
 		D386B3CA1BE8F76900BB89B6 /* MapFinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFinishViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				D39908B61C1A84B10020C5AC /* RankViewController.swift */,
 				D39908BA1C1AA2C30020C5AC /* RankTableViewCell.swift */,
 				D39908BB1C1AA2C30020C5AC /* RankTableViewCell.xib */,
+				D371475C1C24CA3E00AD0CF9 /* LoadingProxy.swift */,
 			);
 			path = Rootopi;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				D302412A1BDF0E7000C2DB74 /* FavoriteTableViewController.swift in Sources */,
 				D30241321BDF6A7A00C2DB74 /* FavoriteNavigationController.swift in Sources */,
 				D39908AB1C14A2C90020C5AC /* SerchSelectTableViewController.swift in Sources */,
+				D371475D1C24CA3F00AD0CF9 /* LoadingProxy.swift in Sources */,
 				D31BAEA81BD9D89100CE6BB4 /* YahooLocal.swift in Sources */,
 				D31B614F1BD0901000B09B5B /* CommViewController.swift in Sources */,
 				D386B3CD1BE8F81100BB89B6 /* BarcodeNavigationController.swift in Sources */,

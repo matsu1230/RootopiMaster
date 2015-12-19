@@ -26,6 +26,7 @@ class CommodityTableViewController: UITableViewController {
         tableView.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,6 +84,7 @@ class CommodityTableViewController: UITableViewController {
             let cellVC : CommViewController = segue.destinationViewController as! CommViewController
             //managerPname = CommodityManager.sheradInstance.commoditys[self.selectedRow!].cName as String
             cellVC.id = self.selectedRow
+            //self.tableView.removeFromSuperview()
             //print(comMa.pName!)
         }
     }

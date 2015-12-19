@@ -15,6 +15,9 @@ class DownloadsViewController: UIViewController {
     static var flg: Bool = false
     var count : Int = 0
     
+    let size = CGSize(width: 300, height: 200)
+
+    
     //let sectionNum = 1
     // 1セクションあたりのセルの行数
     var cellNum = 10
@@ -25,7 +28,8 @@ class DownloadsViewController: UIViewController {
     //セルの中身のURL
     static var tumblrUrls = NSMutableArray()
     //セルの中身の画像
-    static var tumblrPhotos = NSMutableArray()
+    static var tumblrPhotos : Array<UIImage> = []
+    
     //セルの中身のbody
     static var tumblrBodys = NSMutableArray()
     
@@ -50,35 +54,31 @@ class DownloadsViewController: UIViewController {
     let patternFigure2 = "<figure.*?></figure>"
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let topImageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
         topImageView.image = UIImage(named: "toppage")
         self.view.addSubview(topImageView)
+        self.makeTableData()
+        let callback = { () -> Void in
+            if self.count == 3 {
+                self.transition()
+            }
+            self.count += 1
+        }
+        commodityCollection.fetcCommodity(callback)
+
         // Do any additional setup after loading the view, typically from a nib.
         //self.flg = load()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //print(false)
-        //self.transition()
-        self.makeTableData()
-        
-        let callback = { () -> Void in
-            if self.count == 3 {
-            self.transition()
-            }
-            self.count += 1
-        }
-        commodityCollection.fetcCommodity(callback)
-
-
     }
     
     
@@ -124,7 +124,16 @@ class DownloadsViewController: UIViewController {
                 print("\(replaceStringImgUrl2) + \(i)", terminator: "")
                 //print("\n")
                 // = replaceStringBody
-                DownloadsViewController.tumblrPhotos[i] = replaceStringImgUrl2 as String
+                let photoUrl = NSURL(string: replaceStringImgUrl2)
+                let req = NSURLRequest(URL : photoUrl!)
+                NSURLConnection.sendAsynchronousRequest(req, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+                    UIGraphicsBeginImageContext(self.size)
+                    let photo = UIImage(data: data!)
+                    photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
+                    let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+                    DownloadsViewController.tumblrPhotos.append(resizeImage)
+                }
                 let info = "\(titel)"
                 let urlinfo = "\(url)"
                 DownloadsViewController.tumblrTitle[i] = info

@@ -23,6 +23,9 @@ class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDe
         print(self.url)
         let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
         self.navigationItem.titleView = titleImageView
+        webView.delegate = self
+        LoadingProxy.set(self); //表示する親をセット
+        LoadingProxy.on();//ローディング表示。非表示にする場合はoff
         //print(image)
         //self.imageView.image = image!
         openUrl(url!)
@@ -51,6 +54,27 @@ class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDe
             UIApplication.sharedApplication().openURL(nsUrl)
         }
         
+    }
+    
+    //ページが読み終わったときに呼ばれる関数
+    func webViewDidFinishLoad(webView: UIWebView) {
+        LoadingProxy.off();//ローディング表示。非表示にする場合はoff
+        //println("ページ読み込み完了しました！")
+    }
+    //ページを読み始めた時に呼ばれる関数
+    func webViewDidStartLoad(webView: UIWebView) {
+        LoadingProxy.on();//ローディング表示。非表示にする場合はoff
+
+        //println("ページ読み込み開始しました！")
+    }
+    
+    deinit {
+        self.webView.delegate = nil
+        self.url = nil
+        self.webView.stopLoading()
+        self.webView.loadHTMLString("", baseURL: nil)
+        self.view.removeFromSuperview()
+        print("解放")
     }
     
 }
