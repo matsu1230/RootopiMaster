@@ -103,8 +103,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         view1.frame = CGRectMake(0, 200, 400, 300)
         
-        view1.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0)
-        
+        view1.backgroundColor = UIColor.whiteColor()
         var x: CGFloat = 0
         var y: CGFloat = 0
         var count = 0
