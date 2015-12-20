@@ -29,8 +29,7 @@ class SelectViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationController?.title = "商品登録"
         shopListTable.registerNib(UINib(nibName: "SelectTableViewCell", bundle: nil), forCellReuseIdentifier: "SelectTableViewCell")
         shopListTable.delegate = self
         shopListTable.dataSource = self

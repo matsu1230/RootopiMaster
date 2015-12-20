@@ -21,8 +21,9 @@ class CommodityTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        //let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationController?.title = "商品一覧"
+        //self.navigationItem.titleView = titleImageView
         tableView.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension

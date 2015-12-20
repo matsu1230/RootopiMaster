@@ -20,8 +20,7 @@ class SerchSelectTableViewController: UITableViewController, UISearchBarDelegate
     var catgoryArray = ["チョコ・飴・ガム・グミ","クッキー・ビスケット・パイ","スナック・せんべい・駄菓子","おつまみ・ドライフルーツ","アイス・シャーベット","清涼飲料水・炭酸飲料水","コーヒー飲料・乳飲料"]
     
     override func viewDidLoad() {
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationItem.title = "検索"
         super.viewDidLoad()
         self.commSerchBar.delegate = self
         ///print(self.serchTable.c)

@@ -61,8 +61,8 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationController?.title = "商品情報"
+
         self.commentTextField.delegate  = self
         UIGraphicsBeginImageContext(self.size)
         let photo = UIImage(named: "twitter")

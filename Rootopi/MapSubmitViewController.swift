@@ -24,8 +24,7 @@ class MapSubmitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationController?.title = "商品登録"
         //print(self.lon)
         //print(self.lat)
         // Do any additional setup after loading the

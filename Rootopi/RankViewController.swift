@@ -26,8 +26,7 @@ class RankViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedRow : Int!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        navigationItem.titleView = titleImageView
+        self.navigationController?.title = "ランキング"
         rankTable.registerNib(UINib(nibName: "RankTableViewCell", bundle: nil), forCellReuseIdentifier: "RankTableViewCell")
         self.rankTable.delegate = self
         self.rankTable.dataSource = self

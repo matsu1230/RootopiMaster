@@ -27,8 +27,7 @@ class BarcodeSerchViewController: UIViewController, AVCaptureMetadataOutputObjec
     var id: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationController?.title = "バーコード検索"
         // カメラがあるか確認し，取得する
         self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         var error : NSError?

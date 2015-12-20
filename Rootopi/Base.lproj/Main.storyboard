@@ -29,8 +29,7 @@
                         </prototypes>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="お気に入り" id="GjY-xe-iWZ"/>
-                    <navigationItem key="navigationItem" id="Vff-j6-VRV">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="お気に入り" id="Vff-j6-VRV">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="MSr-Ab-TE9">
                             <view key="customView" contentMode="scaleToFill" id="Jq1-ka-ABZ">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -137,8 +136,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="マップ" id="LDy-eB-VcJ"/>
-                    <navigationItem key="navigationItem" id="NEt-Yk-l9k">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="マップ" id="NEt-Yk-l9k">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Hhu-L1-plO">
                             <view key="customView" contentMode="scaleToFill" id="sD2-FE-OUM">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -220,7 +218,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-S7-LJf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugw-S7-LJf">
                                 <rect key="frame" x="157" y="315" width="60" height="30"/>
                                 <state key="normal" title="検索する"/>
                                 <connections>
@@ -362,7 +360,7 @@
                                                     <segue destination="Yw9-34-sYq" kind="show" id="J6k-F8-2uo"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="　最新記事" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4U-DF-IAq">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="　Pick UP記事" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4U-DF-IAq">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -488,20 +486,20 @@
             </objects>
             <point key="canvasLocation" x="926.5" y="-2826.5"/>
         </scene>
-        <!--Tumblr Table View Controller-->
+        <!--記事一覧-->
         <scene sceneID="qVe-7W-fII">
             <objects>
                 <tableViewController id="cKz-Sx-Uyl" customClass="TumblrTableViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aMc-8s-Vav">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TumblrTableViewCell" id="Vwf-5j-4uG" customClass="TumblrTableViewCell" customModule="Rootopi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vwf-5j-4uG" id="HF5-rV-61z">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -515,7 +513,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Qb0-fk-5hb">
+                    <navigationItem key="navigationItem" title="記事一覧" id="Qb0-fk-5hb">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="u9m-ot-OUK">
                             <view key="customView" contentMode="scaleToFill" id="Bt2-hn-Qgz">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -562,20 +560,20 @@
             </objects>
             <point key="canvasLocation" x="1844.5" y="-1662.5"/>
         </scene>
-        <!--Commodity Table View Controller-->
+        <!--商品一覧-->
         <scene sceneID="fNp-00-dDm">
             <objects>
                 <tableViewController id="Yw9-34-sYq" customClass="CommodityTableViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Oov-YH-Dby">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CommTableViewCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommTableViewCell" id="PDd-8Y-CNb" customClass="CommTableViewCell" customModule="Rootopi" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PDd-8Y-CNb" id="UDJ-M7-zHG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -598,7 +596,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="DAq-cx-ovm">
+                    <navigationItem key="navigationItem" title="商品一覧" id="DAq-cx-ovm">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="HZA-ZO-Z6p">
                             <view key="customView" contentMode="scaleToFill" id="epf-fe-hw6">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -657,7 +655,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuH-li-tIW">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AuH-li-tIW">
                                 <rect key="frame" x="20" y="20" width="335" height="639"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4I-FB-VWU">
@@ -795,7 +793,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="SkX-Ba-W67">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="lW5-bl-jjq">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="lW5-bl-jjq">
                             <view key="customView" contentMode="scaleToFill" id="evl-tQ-xfs">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -825,7 +823,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="pz7-MU-afF" firstAttribute="centerY" secondItem="s19-lS-39i" secondAttribute="centerY" id="5H2-MQ-xkR"/>
                                     <constraint firstAttribute="trailing" secondItem="pz7-MU-afF" secondAttribute="trailing" id="8TE-eO-T2T"/>
@@ -833,6 +831,7 @@
                                     <constraint firstItem="s19-lS-39i" firstAttribute="leading" secondItem="evl-tQ-xfs" secondAttribute="leadingMargin" id="h6P-Zy-HJr"/>
                                 </constraints>
                             </view>
+                            <color key="tintColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -844,7 +843,7 @@
             </objects>
             <point key="canvasLocation" x="3355.5" y="-1368.5"/>
         </scene>
-        <!--Menu Table View Controller-->
+        <!--メニュー-->
         <scene sceneID="HJO-Jx-gYg">
             <objects>
                 <tableViewController id="WCO-Li-z2g" customClass="MenuTableViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -856,7 +855,7 @@
                             <tableViewSection headerTitle="Menu" id="oGZ-ef-PTs">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Zb4-dA-6TQ" style="IBUITableViewCellStyleDefault" id="3el-58-VUa">
-                                        <rect key="frame" x="0.0" y="22" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3el-58-VUa" id="wCG-cp-o4i">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -876,7 +875,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="iHf-ZX-QI8" style="IBUITableViewCellStyleDefault" id="Phy-Rb-0Jv">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="130" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Phy-Rb-0Jv" id="QBJ-IO-buj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -896,7 +895,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ueI-GX-CEA" style="IBUITableViewCellStyleDefault" id="MyV-hP-lIH">
-                                        <rect key="frame" x="0.0" y="110" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="174" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MyV-hP-lIH" id="w31-Zs-jUg">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -916,7 +915,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="C4D-DT-Jfi" style="IBUITableViewCellStyleDefault" id="RK0-nP-xZ0">
-                                        <rect key="frame" x="0.0" y="154" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="218" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RK0-nP-xZ0" id="DnR-PH-ZtI">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -938,7 +937,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gZy-rJ-j38" style="IBUITableViewCellStyleDefault" id="se1-xJ-M9v">
-                                        <rect key="frame" x="0.0" y="198" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="262" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="se1-xJ-M9v" id="N65-Qa-Mgw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -960,7 +959,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gxZ-td-q9X" style="IBUITableViewCellStyleDefault" id="8SM-8O-A2e">
-                                        <rect key="frame" x="0.0" y="242" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="306" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8SM-8O-A2e" id="oLO-D6-8mK">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -982,7 +981,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ab9-m6-cof" style="IBUITableViewCellStyleDefault" id="U7n-ua-fVW">
-                                        <rect key="frame" x="0.0" y="286" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="350" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U7n-ua-fVW" id="F2A-8t-kod">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1010,7 +1009,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="bN8-xY-aTC">
+                    <navigationItem key="navigationItem" title="メニュー" id="bN8-xY-aTC">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="KCQ-8C-bKt">
                             <view key="customView" contentMode="scaleToFill" id="NgW-xd-SlD">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -1183,7 +1182,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-El-JjM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9w-El-JjM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-6o-EMy">
@@ -1400,7 +1399,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" id="zqV-qY-Ec6">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -1408,7 +1407,7 @@
                             <tableViewSection headerTitle="カテゴリー" id="jaF-xx-o4o" userLabel="カテゴリー">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kn5-bG-I3a">
-                                        <rect key="frame" x="0.0" y="66" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="130" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kn5-bG-I3a" id="XsA-cy-Wvp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1424,7 +1423,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="D47-p2-htY">
-                                        <rect key="frame" x="0.0" y="110" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="174" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D47-p2-htY" id="F0p-Ys-shx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1440,7 +1439,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VdX-dJ-Ji7">
-                                        <rect key="frame" x="0.0" y="154" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="218" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VdX-dJ-Ji7" id="G3i-WC-hVT">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1456,7 +1455,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hFS-Bz-s8D">
-                                        <rect key="frame" x="0.0" y="198" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="262" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hFS-Bz-s8D" id="xJU-Pb-jOh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1472,7 +1471,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v1s-Zs-oVE">
-                                        <rect key="frame" x="0.0" y="242" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="306" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v1s-Zs-oVE" id="OLd-KC-rET">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1488,7 +1487,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5gZ-AO-KdQ">
-                                        <rect key="frame" x="0.0" y="286" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="350" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5gZ-AO-KdQ" id="cQ2-hu-vOe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1504,7 +1503,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="qqh-7h-uXI">
-                                        <rect key="frame" x="0.0" y="330" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="394" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qqh-7h-uXI" id="z7z-Dp-vHx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1552,7 +1551,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ouq-m8-WCW">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ouq-m8-WCW" id="8kf-3Q-Fzr">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1612,7 +1611,7 @@
             </objects>
             <point key="canvasLocation" x="390.5" y="506.5"/>
         </scene>
-        <!--Rank View Controller-->
+        <!--ランキング-->
         <scene sceneID="GRx-hD-Edh">
             <objects>
                 <viewController id="e2v-Ip-Bnm" customClass="RankViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -1624,7 +1623,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sak-sf-XMe">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sak-sf-XMe">
                                 <rect key="frame" x="16" y="40" width="343" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nw1-Kt-jE5"/>
@@ -1634,7 +1633,7 @@
                                     <segment title="閲覧数TOP10"/>
                                 </segments>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FXY-yF-uTp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FXY-yF-uTp">
                                 <rect key="frame" x="16" y="78" width="343" height="532"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1670,8 +1669,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="KcA-3B-lJB">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="ランキング" id="KcA-3B-lJB">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Pz5-97-vWm">
                             <view key="customView" contentMode="scaleToFill" id="C9G-S5-jkE">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -1917,7 +1915,7 @@
             </objects>
             <point key="canvasLocation" x="2011.5" y="-2385.5"/>
         </scene>
-        <!--Comm View Controller-->
+        <!--商品情報-->
         <scene sceneID="QsJ-cJ-y7q">
             <objects>
                 <viewController id="jXn-mq-eDZ" customClass="CommViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -1929,7 +1927,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-Fw-kNK">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-Fw-kNK">
                                 <rect key="frame" x="0.0" y="17" width="375" height="650"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2l-qM-2lP">
@@ -2242,8 +2240,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="rKG-0z-1g4">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="商品情報" id="rKG-0z-1g4">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="FNg-rp-uSd">
                             <view key="customView" contentMode="scaleToFill" id="vGG-Oi-u6r">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -2338,7 +2335,7 @@
             </objects>
             <point key="canvasLocation" x="3438.5" y="761.5"/>
         </scene>
-        <!--Item 1-->
+        <!--バーコード-->
         <scene sceneID="MMl-vC-wRn">
             <objects>
                 <viewController id="qQJ-HK-52e" customClass="BarcodeTopViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -2372,7 +2369,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="33M-7T-BSS"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="y5e-xF-V3M">
+                    <navigationItem key="navigationItem" title="バーコード" id="y5e-xF-V3M">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="GHV-Tl-BCb">
                             <view key="customView" contentMode="scaleToFill" id="ZQV-kp-fY7">
                                 <rect key="frame" x="276" y="5" width="83" height="33"/>
@@ -2420,7 +2417,7 @@
             </objects>
             <point key="canvasLocation" x="1391.5" y="1045.5"/>
         </scene>
-        <!--View Controller-->
+        <!--商品登録-->
         <scene sceneID="yvp-YN-a1p">
             <objects>
                 <viewController id="Eha-GJ-EqZ" sceneMemberID="viewController">
@@ -2460,13 +2457,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="商品登録" id="3Vl-uB-Fu2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ciq-k2-eXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796.5" y="1974.5"/>
+            <point key="canvasLocation" x="1889.5" y="1962.5"/>
         </scene>
-        <!--Bar Code View Controller-->
+        <!--商品登録-->
         <scene sceneID="AuD-z2-Ack">
             <objects>
                 <viewController storyboardIdentifier="barCode" id="kRt-dI-F5e" customClass="BarCodeViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -2501,6 +2499,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="商品登録" id="uq5-Qs-90G"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barCodeButton" destination="hNd-o5-eiW" id="sTk-z8-CJ4"/>
@@ -2510,7 +2509,7 @@
             </objects>
             <point key="canvasLocation" x="2497.5" y="1626.5"/>
         </scene>
-        <!--Select View Controller-->
+        <!--商品登録-->
         <scene sceneID="nvk-ZQ-FK1">
             <objects>
                 <viewController storyboardIdentifier="select" id="5Ke-z0-nng" customClass="SelectViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -2601,6 +2600,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="商品登録" id="765-Qa-Xwk"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -2614,7 +2614,7 @@
             </objects>
             <point key="canvasLocation" x="2979.5" y="1626.5"/>
         </scene>
-        <!--Map Submit View Controller-->
+        <!--商品登録-->
         <scene sceneID="gi8-85-6Qz">
             <objects>
                 <viewController id="jIq-Ib-vNM" customClass="MapSubmitViewController" customModule="Rootopi" customModuleProvider="target" sceneMemberID="viewController">
@@ -2657,6 +2657,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="商品登録" id="cBM-yL-i1K"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="selectMap" destination="Frq-q2-yWk" id="EbX-yj-y8o"/>
@@ -2797,17 +2798,17 @@
         <image name="search_58x58" width="26" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x02-bI-jro"/>
-        <segue reference="4fT-hG-1iR"/>
-        <segue reference="OLM-Ex-Aqs"/>
-        <segue reference="orT-RD-NMO"/>
-        <segue reference="e6D-iY-jmx"/>
-        <segue reference="cVJ-PH-3G9"/>
-        <segue reference="wDk-uV-yWL"/>
-        <segue reference="c9B-le-8GV"/>
-        <segue reference="Lbn-Ho-xmG"/>
         <segue reference="w3N-5v-yd2"/>
-        <segue reference="7FQ-kT-hZm"/>
-        <segue reference="mkh-u3-eNi"/>
+        <segue reference="KGm-0h-6oh"/>
+        <segue reference="xsD-GG-dIb"/>
+        <segue reference="e6D-iY-jmx"/>
+        <segue reference="M8z-Gm-cR5"/>
+        <segue reference="E6L-w7-l3j"/>
+        <segue reference="Lbn-Ho-xmG"/>
+        <segue reference="c9B-le-8GV"/>
+        <segue reference="qmK-5a-KWP"/>
+        <segue reference="wDk-uV-yWL"/>
+        <segue reference="4fT-hG-1iR"/>
+        <segue reference="GkL-KE-bUA"/>
     </inferredMetricsTieBreakers>
 </document>

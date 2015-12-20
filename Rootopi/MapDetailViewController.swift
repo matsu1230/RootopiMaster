@@ -48,10 +48,9 @@ class MapDetailViewController: UIViewController,CLLocationManagerDelegate, MKMap
         
         super.viewDidLoad()
         //self.yls.shops.removeAll()
-        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        navigationItem.titleView = titleImageView
 
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController?.title = "地図"
         myMap.delegate = self
         self.buttonCounnt = 0
         self.loadFlag = 0

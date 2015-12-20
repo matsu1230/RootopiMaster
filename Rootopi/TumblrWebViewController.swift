@@ -21,6 +21,7 @@ class TumblrWebViewController: UIViewController,UIWebViewDelegate, UISearchBarDe
     override func viewDidLoad() {
         super.viewDidLoad()
         print(self.url)
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
         self.navigationItem.titleView = titleImageView
         webView.delegate = self

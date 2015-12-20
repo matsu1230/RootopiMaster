@@ -12,8 +12,8 @@ class MenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        //let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        self.navigationItem.title = "メニュー"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

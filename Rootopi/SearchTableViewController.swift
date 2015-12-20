@@ -22,8 +22,7 @@ class SearchTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //print(self.category)
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationItem.title = "検索結果"
         self.tableView.registerNib(UINib(nibName: "CommTableViewCell", bundle: nil), forCellReuseIdentifier: "CommTableViewCell")
         self.tableView.estimatedRowHeight = 120
         self.tableView.rowHeight = UITableViewAutomaticDimension

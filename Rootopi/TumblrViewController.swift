@@ -24,8 +24,9 @@ class TumblrViewController: UIViewController {
         super.viewDidLoad()
         
         viewSet()
-        let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
-        self.navigationItem.titleView = titleImageView
+        self.navigationItem.title  =  DownloadsViewController.tumblrTitle[Int(id!)] as? String
+        //let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
+        //self.navigationItem.titleView = titleImageView
         self.tweetButton.setBackgroundImage(UIImage(named: "twitter"), forState: .Normal)
         print(id!)
         // Do any additional setup after loading the view.
