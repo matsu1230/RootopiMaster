@@ -24,10 +24,12 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var commImageView: UIImageView!
     @IBOutlet weak var cMaker: UILabel!
     @IBOutlet weak var cName: UILabel!
-    @IBOutlet weak var stampImage: UIImageView!
+    @IBOutlet weak var stampButton: UIButton!
+    //@IBOutlet weak var stampImage: UIImageView!
     @IBOutlet weak var commScrollView: UIScrollView!
-    @IBOutlet weak var tweetButton: UIButton!
-    @IBOutlet weak var commentCount: UILabel!
+
+    /*@IBOutlet weak var tweetButton: UIButton!
+    @IBOutlet weak var commentCount: UILabel!*/
     
     var myComposeView : SLComposeViewController!
     var tweetImage: UIImage?
@@ -61,15 +63,16 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.title = "商品情報"
+        //self.navigationController?.title = "商品情報"
+        self.commScrollView.showsVerticalScrollIndicator = false;
 
-        self.commentTextField.delegate  = self
+        //self.commentTextField.delegate  = self
         UIGraphicsBeginImageContext(self.size)
         let photo = UIImage(named: "twitter")
         photo!.drawInRect(CGRectMake(0, 0, self.size.width, self.size.height))
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        tweetButton.setBackgroundImage(resizeImage, forState: .Normal)
+        //tweetButton.setBackgroundImage(resizeImage, forState: .Normal)
         print(self.id)
         commentTable.registerNib(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
         //キーボーど用
@@ -101,7 +104,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         commentTextField .inputAccessoryView = myKeyboard
         commentTextField.delegate = self
         
-        view1.frame = CGRectMake(0, 200, 400, 300)
+        view1.frame = CGRectMake(0, 200, 300, 300)
         
         view1.backgroundColor = UIColor.whiteColor()
         var x: CGFloat = 0
@@ -115,7 +118,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             button.setBackgroundImage(buttonImage, forState: .Normal)
             button.addTarget(self, action: "onClick:", forControlEvents: UIControlEvents.TouchDown)
             view1.addSubview(button)
-            if count == 4 || count == 9 {
+            if count == 3 || count == 8 {
                 x = 0
                 y += 80
             } else {
@@ -139,11 +142,11 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var height : CGFloat?
         manager.fechComment(cName.text!, callBack: { comments in
             self.commentArry.append(comments)
-            self.commentTable.reloadData()
-            self.commentCount.text = "コメント(\(self.commentArry.count))件"
+            //self.commentTable.reloadData()
+            //self.commentCount.text = "コメント(\(self.commentArry.count))件"
             height = CGFloat(self.commentArry.count * 80)
             print(height)
-            print(self.commScrollView.contentSize.height)
+            //print(self.commScrollView.contentSize.height)
             }
         )
     }
@@ -273,7 +276,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
             print("save", terminator: "")
             commentTextField.text = ""
             self.stampIndex = 0
-            stampImage.image = nil
+            //stampImage.image = nil
         }
     }
     
@@ -282,7 +285,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         updateFavorite()
     }
 
-    func tappedToolBarBtn(sender: UIBarButtonItem) {
+   func tappedToolBarBtn(sender: UIBarButtonItem) {
         commentTextField.resignFirstResponder()
     }
     
@@ -290,7 +293,8 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         buttonImage = UIImage(named: imageArray[sender.tag])
         self.stampIndex = sender.tag
         buttonImageView.image = buttonImage
-        stampImage.image = buttonImage
+        stampButton.setBackgroundImage(buttonImage, forState: .Normal)
+        //stampImage.image = buttonImage
         self.view.endEditing(true)
         commentTextField.inputView = nil
         commentTextField.reloadInputViews()
@@ -322,13 +326,14 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         commentTextField.inputView = nil
         commentTextField.reloadInputViews()
     }
+    
     @IBAction func tweetButton(sender: UIButton) {
         // SLComposeViewControllerのインスタンス化.
         // ServiceTypeをTwitterに指定.
         myComposeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         
         // 投稿するテキストを指定.
-        myComposeView.setInitialText("てすと")
+        myComposeView.setInitialText("\(self.cName.text!)\nメーカー　\(self.cMaker.text!)\nカロリー　\(self.cKcal.text!)")
         let i = Int(id!)
         // 投稿する画像を指定.
         myComposeView.addImage(CommodityManager.sheradInstance.commoditys[i].tweetImage)
@@ -336,7 +341,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // myComposeViewの画面遷移.
         self.presentViewController(myComposeView, animated: true, completion: nil)
     }
-    
+    /*
     //テキスト制限
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
@@ -352,7 +357,7 @@ class CommViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("文字を超えています")
         return false
     }
-
+*/
     //戻るイベント
     override func viewWillDisappear(animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {

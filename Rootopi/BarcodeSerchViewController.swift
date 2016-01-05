@@ -11,6 +11,7 @@ import AVFoundation
 
 
 class BarcodeSerchViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    @IBOutlet weak var serchButton: UIButton!
     
     let captureSession = AVCaptureSession();
     var previewLayer: AVCaptureVideoPreviewLayer?

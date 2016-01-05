@@ -58,7 +58,7 @@ public struct QueryCondition {
     // 店舗ID
     public var gid: String? = nil
     // ソート順
-    public var sort: String? = "score"
+    public var sort: String? = "dist"
     
     //public var sort: Sort = .Hybrid
     // 緯度
@@ -118,7 +118,7 @@ public class YahooLocalSearch {
     // APIのベースURL
     let apiUrl = "http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/localSearch"
     // 1ページのレコード数
-    let perPage = 10
+    let perPage = 30
     // 読込済の店舗
     public var shops = [Shop]()
     // trueだと読込中
@@ -159,7 +159,7 @@ public class YahooLocalSearch {
         // 検索条件以外のAPIパラメタを設定
         params["appid"] = apiId
         params["output"] = "json"
-        params["start"] = String(shops.count + 1)
+        params["start"] = String(shops.count)
         params["results"] = String(perPage)
         print(params)
         // API実行開始を通知する

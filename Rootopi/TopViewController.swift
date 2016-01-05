@@ -16,6 +16,7 @@ class TopViewController: UIViewController {
     @IBOutlet weak var comButton2: UIButton!
     @IBOutlet weak var tumblrButton: UIButton!
     
+    @IBOutlet weak var comTitle: UILabel!
     @IBOutlet weak var myScrollView: UIScrollView!
     var id : Int?
     
@@ -55,7 +56,8 @@ class TopViewController: UIViewController {
         let tumblr = DownloadsViewController.tumblrPhotos[0]
         let title = DownloadsViewController.tumblrTitle[0]
         comButton1.setBackgroundImage(com[0].photo, forState: .Normal)
-        comButton2.setBackgroundImage(com[1].photo, forState: .Normal)
+        comTitle.text = com[0].cName
+        //comButton2.setBackgroundImage(com[1].photo, forState: .Normal)
         //let photoUrl = NSURL(string: tumblr as! String)
        // let urlStr : String = tumblr.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
         //let photoUrl = NSURL(string: urlStr )

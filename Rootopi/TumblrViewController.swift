@@ -15,7 +15,7 @@ class TumblrViewController: UIViewController {
     @IBOutlet weak var tumblrtitle: UILabel!
     @IBOutlet weak var tumblrbody: UILabel!
     var id : Int?
-    @IBOutlet weak var tweetButton: UIButton!
+    //@IBOutlet weak var tweetButton: UIButton!
     var err: NSError?
     var myComposeView : SLComposeViewController!
     var photo : UIImage!
@@ -27,7 +27,7 @@ class TumblrViewController: UIViewController {
         self.navigationItem.title  =  DownloadsViewController.tumblrTitle[Int(id!)] as? String
         //let titleImageView: UIImageView? = UIImageView(image: UIImage(named: "logo"))
         //self.navigationItem.titleView = titleImageView
-        self.tweetButton.setBackgroundImage(UIImage(named: "twitter"), forState: .Normal)
+        //self.tweetButton.setBackgroundImage(UIImage(named: "twitter"), forState: .Normal)
         print(id!)
         // Do any additional setup after loading the view.
     }
@@ -70,7 +70,7 @@ class TumblrViewController: UIViewController {
         }
     }
     
-    @IBAction func tapTweet(sender: UIButton) {
+   /* @IBAction func tapTweet(sender: UIButton) {
         myComposeView = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         
         // 投稿するテキストを指定.
@@ -84,7 +84,7 @@ class TumblrViewController: UIViewController {
         // myComposeViewの画面遷移.
         self.presentViewController(myComposeView, animated: true, completion: nil)
         
-    }
+    }*/
     
     override func viewWillDisappear(animated: Bool) {
         if let viewControllers = self.navigationController?.viewControllers {
